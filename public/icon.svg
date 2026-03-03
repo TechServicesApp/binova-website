@@ -1,0 +1,76 @@
+<svg width="200" height="200" viewBox="0 0 200 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <filter id="bv-shadow" x="-10%" y="-10%" width="120%" height="130%">
+      <feDropShadow dx="0" dy="4" stdDeviation="6" flood-color="#00000030" />
+    </filter>
+    <linearGradient id="bv-epi" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#3d8c28" />
+      <stop offset="35%" stop-color="#7dbc48" />
+      <stop offset="65%" stop-color="#5fa832" />
+      <stop offset="100%" stop-color="#2d6a1a" />
+    </linearGradient>
+    <linearGradient id="bv-leaf-ext" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1a5218" />
+      <stop offset="50%" stop-color="#2a7020" />
+      <stop offset="100%" stop-color="#1a5218" />
+    </linearGradient>
+    <linearGradient id="bv-leaf-int" x1="0%" y1="0%" x2="100%" y2="0%">
+      <stop offset="0%" stop-color="#1e5c1c" />
+      <stop offset="50%" stop-color="#2e7a28" />
+      <stop offset="100%" stop-color="#1e5c1c" />
+    </linearGradient>
+    <radialGradient id="bv-sun" cx="40%" cy="38%">
+      <stop offset="0%" stop-color="#ffe040" />
+      <stop offset="55%" stop-color="#ffc020" />
+      <stop offset="100%" stop-color="#f09000" />
+    </radialGradient>
+  </defs>
+
+  <!-- Cercle blanc (avec ombre) -->
+  <circle cx="100" cy="100" r="96" fill="white" filter="url(#bv-shadow)" />
+
+  <!-- Feuille extérieure gauche (large, inclinée ~38°) -->
+  <ellipse cx="55" cy="115" rx="15" ry="56" transform="rotate(-38 55 115)" fill="url(#bv-leaf-ext)" />
+  <line x1="36" y1="68" x2="66" y2="155" stroke="#1a5218" stroke-width="1.2" opacity="0.55" />
+
+  <!-- Feuille extérieure droite -->
+  <ellipse cx="145" cy="115" rx="15" ry="56" transform="rotate(38 145 115)" fill="url(#bv-leaf-ext)" />
+  <line x1="164" y1="68" x2="134" y2="155" stroke="#1a5218" stroke-width="1.2" opacity="0.55" />
+
+  <!-- Feuille intérieure gauche (moins large, ~18°) -->
+  <ellipse cx="76" cy="120" rx="11" ry="48" transform="rotate(-18 76 120)" fill="url(#bv-leaf-int)" />
+
+  <!-- Feuille intérieure droite -->
+  <ellipse cx="124" cy="120" rx="11" ry="48" transform="rotate(18 124 120)" fill="url(#bv-leaf-int)" />
+
+  <!-- Épi central : ombre de profondeur -->
+  <ellipse cx="103" cy="110" rx="17" ry="55" fill="#2a6a15" opacity="0.35" />
+
+  <!-- Épi central : corps principal -->
+  <ellipse cx="100" cy="108" rx="16" ry="54" fill="url(#bv-epi)" />
+
+  <!-- Épi central : reflet clair (highlight gauche) -->
+  <ellipse cx="94" cy="98" rx="5.5" ry="30" fill="#a8d860" opacity="0.55" />
+
+  <!-- Base / sol -->
+  <ellipse cx="100" cy="162" rx="26" ry="7" fill="#1e5c1c" opacity="0.6" />
+
+  <!-- Soleil gauche -->
+  <circle cx="68" cy="60" r="15" fill="url(#bv-sun)" />
+
+  <!-- Soleil droit -->
+  <circle cx="132" cy="60" r="15" fill="url(#bv-sun)" />
+
+  <!-- 3 points rouges (haut / milieu / bas) -->
+  <circle cx="100" cy="84" r="7.5" fill="#cc1800" />
+  <circle cx="100" cy="84" r="5" fill="#e62010" />
+
+  <circle cx="100" cy="108" r="7.5" fill="#cc1800" />
+  <circle cx="100" cy="108" r="5" fill="#e62010" />
+
+  <circle cx="100" cy="132" r="7.5" fill="#cc1800" />
+  <circle cx="100" cy="132" r="5" fill="#e62010" />
+
+  <!-- Bordure cercle vert foncé -->
+  <circle cx="100" cy="100" r="96" fill="none" stroke="#1a5218" stroke-width="3.5" />
+</svg>

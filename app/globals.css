@@ -1,0 +1,196 @@
+@import 'tailwindcss';
+@import 'tw-animate-css';
+
+@custom-variant dark (&:is(.dark *));
+
+:root {
+  /* === BINOVA SOFT & CLEAN DESIGN TOKENS === */
+  /* Signature Green - Use sparingly for logos and important titles */
+  --green-signature: #135B34;
+  
+  /* Soft Green - For section backgrounds and cards */
+  --green-soft: #F0F7F4;
+  
+  /* Modern Gold - Matte finish for refined details */
+  --gold-modern: #D4AF37;
+  --gold-light: #E8D7A0;
+  --gold-lighter: #F5EDD4;
+  
+  /* Slate Gray - Soft readable text */
+  --gray-slate: #2D3748;
+  --gray-medium: #4A5568;
+  --gray-light: #A0AEC0;
+  --gray-lighter: #E2E8F0;
+  
+  /* Supporting neutrals */
+  --white: #FFFFFF;
+  --off-white: #FAFAFA;
+  --soft-bg: #F7F9FA;
+  
+  /* Glass effects - adapted for light theme */
+  --glass-bg: rgba(255, 255, 255, 0.85);
+  --glass-border: rgba(19, 91, 52, 0.1);
+
+  /* === SEMANTIC TOKENS === */
+  --background: var(--white);
+  --foreground: var(--gray-slate);
+  --card: var(--white);
+  --card-foreground: var(--gray-slate);
+  --popover: var(--white);
+  --popover-foreground: var(--gray-slate);
+  --primary: var(--green-signature);
+  --primary-foreground: var(--white);
+  --secondary: var(--green-soft);
+  --secondary-foreground: var(--gray-slate);
+  --muted: var(--soft-bg);
+  --muted-foreground: var(--gray-medium);
+  --accent: var(--gold-modern);
+  --accent-foreground: var(--gray-slate);
+  --destructive: #DC2626;
+  --destructive-foreground: var(--white);
+  --border: var(--gray-lighter);
+  --input: var(--gray-lighter);
+  --ring: var(--green-signature);
+  --radius: 0.75rem;
+
+  /* === SHADOWS - Soft & Subtle === */
+  --shadow-card: 0 2px 8px rgba(45, 55, 72, 0.06), 0 1px 2px rgba(45, 55, 72, 0.04);
+  --shadow-card-hover: 0 4px 16px rgba(45, 55, 72, 0.1), 0 2px 4px rgba(45, 55, 72, 0.06);
+  --shadow-glow-green: 0 0 24px rgba(19, 91, 52, 0.12);
+  --shadow-glow-gold: 0 0 20px rgba(212, 175, 55, 0.15);
+  --shadow-float: 0 12px 40px rgba(45, 55, 72, 0.12);
+}
+
+@theme inline {
+  --font-sans: 'Inter', 'Inter Fallback', sans-serif;
+  --font-display: 'Plus Jakarta Sans', 'Plus Jakarta Sans Fallback', sans-serif;
+  --font-mono: 'JetBrains Mono', 'JetBrains Mono Fallback', monospace;
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-card: var(--card);
+  --color-card-foreground: var(--card-foreground);
+  --color-popover: var(--popover);
+  --color-popover-foreground: var(--popover-foreground);
+  --color-primary: var(--primary);
+  --color-primary-foreground: var(--primary-foreground);
+  --color-secondary: var(--secondary);
+  --color-secondary-foreground: var(--secondary-foreground);
+  --color-muted: var(--muted);
+  --color-muted-foreground: var(--muted-foreground);
+  --color-accent: var(--accent);
+  --color-accent-foreground: var(--accent-foreground);
+  --color-destructive: var(--destructive);
+  --color-destructive-foreground: var(--destructive-foreground);
+  --color-border: var(--border);
+  --color-input: var(--input);
+  --color-ring: var(--ring);
+  --radius-sm: calc(var(--radius) - 4px);
+  --radius-md: calc(var(--radius) - 2px);
+  --radius-lg: var(--radius);
+  --radius-xl: calc(var(--radius) + 4px);
+
+  /* Binova custom colors - Soft & Clean */
+  --color-green-signature: var(--green-signature);
+  --color-green-soft: var(--green-soft);
+  --color-gold-modern: var(--gold-modern);
+  --color-gold-light: var(--gold-light);
+  --color-gold-lighter: var(--gold-lighter);
+  --color-gray-slate: var(--gray-slate);
+  --color-gray-medium: var(--gray-medium);
+  --color-gray-light: var(--gray-light);
+  --color-gray-lighter: var(--gray-lighter);
+  --color-white: var(--white);
+  --color-off-white: var(--off-white);
+  --color-soft-bg: var(--soft-bg);
+  --color-glass-bg: var(--glass-bg);
+  --color-glass-border: var(--glass-border);
+}
+
+@layer base {
+  * {
+    @apply border-border outline-ring/50;
+  }
+  body {
+    @apply bg-background text-foreground;
+  }
+}
+
+/* === CUSTOM ANIMATIONS === */
+@keyframes shimmer {
+  0% { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50% { transform: translateY(-20px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { opacity: 0.4; }
+  50% { opacity: 1; }
+}
+
+@keyframes marquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@keyframes scroll-bounce {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(8px); }
+}
+
+@keyframes mesh-move {
+  0% { background-position: 0% 0%; }
+  50% { background-position: 100% 100%; }
+  100% { background-position: 0% 0%; }
+}
+
+/* Grain overlay texture */
+.grain-overlay::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* Gold shimmer text effect */
+.gold-shimmer {
+  background: linear-gradient(90deg, var(--gold-modern), var(--gold-light), var(--gold-modern), var(--gold-light));
+  background-size: 200% auto;
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  animation: shimmer 4s linear infinite;
+}
+
+/* Glass morphism */
+.glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(20px) saturate(180%);
+  border: 1px solid var(--glass-border);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 8px;
+}
+::-webkit-scrollbar-track {
+  background: var(--soft-bg);
+}
+::-webkit-scrollbar-thumb {
+  background: var(--gray-light);
+  border-radius: 4px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: var(--green-signature);
+}
+
+/* Selection */
+::selection {
+  background: var(--green-soft);
+  color: var(--green-signature);
+}
