@@ -5,12 +5,12 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import {
   Sparkles, Heart, Target, Globe, Users, TrendingUp,
-  MapPin, Clock, Building2, ChevronDown, ArrowUpRight, Send,
+  MapPin, Clock, Building2, ChevronDown, ArrowUpRight, Send, X,
 } from 'lucide-react'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
-type Department = 'Engineering' | 'Finance' | 'Operations' | 'Strategy' | 'Health' | 'Technology'
+type Department = 'Operations' | 'Strategy' | 'Health'
 
 interface JobOpening {
   id: number
@@ -34,6 +34,11 @@ interface Perk {
   icon: string
   title: string
   description: string
+}
+
+interface LeadershipProfile {
+  id: number
+  title: string
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
@@ -86,76 +91,114 @@ const PERKS: Perk[] = [
   { icon: '', title: 'Career Acceleration',        description: 'Fast-track growth in a rapidly expanding group' },
 ]
 
+const LEADERSHIP_PROFILES: LeadershipProfile[] = [
+  { id: 1, title: 'President and Cofounder, Head of Science and Health Department' },
+  { id: 2, title: 'Head of Energy Department' },
+  { id: 3, title: 'Head of Mining' },
+  { id: 4, title: 'Head of Public Work Department' },
+  { id: 5, title: 'Head of Marketing and Strategy Department' },
+  { id: 6, title: 'Head of Education and Training Department' },
+  { id: 7, title: 'Head of Textile, Plastic and Paper Department' },
+  { id: 8, title: 'Head of Banking and Finance Department' },
+  { id: 9, title: 'Head of Audit and Accounting Department' },
+  { id: 10, title: 'Head of Foods and Beverages Department' },
+  { id: 11, title: 'Head of Automotive and Aerospace Department' },
+  { id: 12, title: 'Head of Human Resources Department' },
+  { id: 13, title: 'Head of Electronics Department' },
+  { id: 14, title: 'Head of Telecom and Media Department' },
+  { id: 15, title: 'Head of Agriculture and Livestock Department' },
+  { id: 16, title: 'Head of Logistics and Transportation Department' },
+  { id: 17, title: 'Head of Supermarkets and Stores' },
+  { id: 18, title: 'Press Relations and Media Partnership Consultant (CEO of G&J Media)' },
+  { id: 19, title: 'Civil and Architect Engineer Consultant (CEO of Mimschack Building)' },
+  { id: 20, title: 'Pharmaceutical Engineering Consultant (CEO of Pharmadeep)' },
+]
+
 const DEPT_COLORS: Record<Department, string> = {
-  Engineering: '#135B34',
-  Finance:     '#D4AF37',
   Operations:  '#1a8a4c',
   Strategy:    '#2a9d5f',
   Health:      '#135B34',
-  Technology:  '#1a8a4c',
 }
 
 // Replace with CAREERS_OPENINGS from @/lib/constants when available
 const JOB_OPENINGS: JobOpening[] = [
   {
     id: 1,
-    title: 'Senior Project Engineer',
-    department: 'Engineering',
-    location: 'Douala, Cameroon',
+    title: 'Pharmaceutical Manufacturing Plant Manager',
+    department: 'Health',
+    location: 'Kribi, Cameroon',
     type: 'Full-time',
     color: '#135B34',
-    description: 'Lead complex infrastructure and energy projects across Central Africa. You will manage multi-disciplinary teams and liaise with international partners.',
-    requirements: ['5+ years civil/mechanical engineering', 'PMP or equivalent certification', 'Bilingual (French/English)', 'Experience in Sub-Saharan Africa'],
+    description: 'You will oversee all production, maintenance, and distribution activities, ensuring compliance with strict GMP and safety standards. You will lead teams to meet operational, quality, and financial goals, optimize efficiency, and manage regulatory inspections.',
+    requirements: [
+      'Regulatory Compliance: Ensure full compliance with GMP and ISO standards.',
+      'Operational Leadership: Manage tablet, capsule, or liquid production lines to meet quality and efficiency targets.',
+      'Quality Management: Oversee QA initiatives, audits, and product release authorization.',
+      'Workforce Leadership: Recruit, train, and manage large specialized teams.',
+      'Process Improvement: Implement lean manufacturing to reduce waste and improve yield.',
+      'Education: Bachelor’s degree in Pharmacy, Engineering, or a related science field.',
+      'Experience: Typically 5+ years in pharmaceutical production management roles.',
+      'Skills: Strong leadership, technical manufacturing expertise, and deep regulatory knowledge.',
+      'Typical Challenges: Navigating stringent regulations, ensuring zero-defect output, and sustaining a strong safety culture.',
+    ],
   },
   {
     id: 2,
-    title: 'Financial Analyst',
-    department: 'Finance',
-    location: 'Montreal, Canada',
+    title: 'Biotech Production Plant Manager',
+    department: 'Health',
+    location: 'Kribi, Cameroon',
     type: 'Full-time',
-    color: '#D4AF37',
-    description: 'Analyze investment opportunities, prepare financial models and support strategic decisions across Binova diverse portfolio of sectors.',
-    requirements: ['CFA or CPA designation', '3+ years investment analysis', 'Advanced Excel & financial modeling', 'Interest in emerging markets'],
+    color: '#135B34',
+    description: 'You will oversee large-scale manufacturing of biological products (vaccines, therapeutics, and API) to ensure efficient, compliant, and safe operations while leading production teams and optimizing yields.',
+    requirements: [
+      'Production Oversight: Manage day-to-day operations to meet output, yield, and cost targets.',
+      'Compliance: Enforce GMP and safety protocols.',
+      'Personnel Leadership: Lead, train, and supervise production staff.',
+      'Operational Excellence: Troubleshoot process issues, reduce waste, and drive continuous improvement.',
+      'Collaboration: Coordinate with R&D, Quality Control, and Supply Chain teams.',
+      'Education: Bachelor’s degree in Biotechnology, Engineering, Biology, or related fields.',
+      'Experience: Solid experience in biotech, pharmaceutical, or related manufacturing environments.',
+      'Skills: Strong leadership, GMP mastery, problem-solving, and operational expertise.',
+    ],
   },
   {
     id: 3,
-    title: 'Operations Manager — Mining',
+    title: 'Energy Production Plant Manager',
     department: 'Operations',
-    location: 'Yaoundé, Cameroon',
+    location: 'Kribi, Cameroon',
     type: 'Full-time',
     color: '#1a8a4c',
-    description: 'Oversee day-to-day mining operations, ensure compliance with environmental standards and drive operational efficiency.',
-    requirements: ['8+ years mining operations', 'Knowledge of HSE regulations', 'Strong leadership skills', 'Fluent in French'],
+    description: 'You will oversee all daily operations, maintenance, and staff at a power generation facility to ensure safe, efficient, and reliable energy output, while managing compliance, equipment performance, and emergency response.',
+    requirements: [
+      'Operations Oversight: Supervise the full generation process and distribution networks.',
+      'Safety & Compliance: Ensure strict adherence to safety regulations and environmental standards.',
+      'Maintenance Management: Plan and oversee machinery maintenance to maximize uptime and efficiency.',
+      'Team Leadership: Manage engineers, technicians, and operators.',
+      'Budgeting & Reporting: Manage plant expenses, optimize resources, and report performance data.',
+      'Emergency Response: Lead rapid interventions for malfunctions, electrical faults, or accidents.',
+      'Education: Bachelor’s degree in Electrical, Mechanical, or Electromechanical Engineering.',
+      'Experience: Strong background in power system protection, maintenance, and plant operations.',
+      'Technical Knowledge: Familiarity with SCADA, turbine operations, and grid requirements.',
+      'Leadership: Proven decision-making and problem-solving in high-pressure contexts.',
+    ],
   },
   {
     id: 4,
-    title: 'Strategy & Business Development',
+    title: 'Graphic Designer',
     department: 'Strategy',
-    location: 'Remote / Hybrid',
+    location: 'Douala, Cameroon (On-site / Hybrid)',
     type: 'Full-time',
     color: '#2a9d5f',
-    description: 'Identify new growth opportunities, build strategic partnerships and contribute to Binova long-term expansion across 14 sectors.',
-    requirements: ['MBA or equivalent', '5+ years strategy consulting', 'Strong network in Africa or Canada', 'Excellent communication skills'],
-  },
-  {
-    id: 5,
-    title: 'Full-Stack Developer',
-    department: 'Technology',
-    location: 'Remote',
-    type: 'Contract',
-    color: '#1a8a4c',
-    description: 'Build and maintain internal digital platforms, dashboards and client-facing products for Binova technology initiatives.',
-    requirements: ['React / Next.js expertise', 'Node.js & PostgreSQL', '3+ years production experience', 'Strong UI/UX sensibility'],
-  },
-  {
-    id: 6,
-    title: 'Medical Research Coordinator',
-    department: 'Health',
-    location: 'Douala, Cameroon',
-    type: 'Full-time',
-    color: '#135B34',
-    description: 'Coordinate clinical and public health research projects within Binova Health & Sciences division.',
-    requirements: ['MSc or PhD in life sciences', 'Research project management', 'Knowledge of African healthcare systems', 'Bilingual preferred'],
+    description: 'Infographic and videographic design skills, combined with photography expertise, are needed to create comprehensive visual stories for social media, marketing, and corporate communication.',
+    requirements: [
+      'Infographic Design: Build charts, graphs, and timelines to simplify complex topics.',
+      'Videographic Design / Motion Graphics: Produce animated and explainer visual storytelling content.',
+      'Photography: Capture product, portrait, and environmental imagery to support visual reports.',
+      'Visual Strategy: Combine design mediums for strong and consistent branding.',
+      'Software: Adobe Creative Cloud (Illustrator, Photoshop, After Effects, Premiere Pro) and Canva.',
+      'Technical Knowledge: Data visualization principles, visual hierarchy, and basic 3D modeling.',
+      'Creative Abilities: Photo manipulation, storyboard creation, and motion graphic design.',
+    ],
   },
 ]
 
@@ -267,10 +310,11 @@ function PerkCard({ perk, index }: { perk: Perk; index: number }) {
 
 // ─── Job accordion ────────────────────────────────────────────────────────────
 
-function JobAccordion({ job, isOpen, onToggle }: {
+function JobAccordion({ job, isOpen, onToggle, onApply }: {
   job: JobOpening
   isOpen: boolean
   onToggle: () => void
+  onApply: (job: JobOpening) => void
 }) {
   return (
     <motion.div
@@ -372,14 +416,15 @@ function JobAccordion({ job, isOpen, onToggle }: {
               </div>
 
               {/* CTA */}
-              <Link
-                href="/contact"
+              <button
+                type="button"
+                onClick={() => onApply(job)}
                 className="inline-flex items-center gap-2 rounded-xl px-6 py-2.5 text-sm font-semibold text-white transition-all duration-300 hover:opacity-90 font-sans"
                 style={{ background: `linear-gradient(135deg, #135B34, #1a8a4c)`, boxShadow: '0 4px 12px rgba(19,91,52,0.2)' }}
               >
                 Apply Now
                 <Send className="h-3.5 w-3.5" />
-              </Link>
+              </button>
             </div>
           </motion.div>
         )}
@@ -392,6 +437,85 @@ function JobAccordion({ job, isOpen, onToggle }: {
 
 export default function CareersPage() {
   const [openIndex, setOpenIndex] = useState<number | null>(null)
+  const [isApplyModalOpen, setIsApplyModalOpen] = useState(false)
+  const [selectedJob, setSelectedJob] = useState<JobOpening | null>(null)
+  const [fullName, setFullName] = useState('')
+  const [email, setEmail] = useState('')
+  const [cvFile, setCvFile] = useState<File | null>(null)
+  const [coverLetterFile, setCoverLetterFile] = useState<File | null>(null)
+  const [isSubmitting, setIsSubmitting] = useState(false)
+  const [submitError, setSubmitError] = useState('')
+  const [submitSuccess, setSubmitSuccess] = useState('')
+
+  const resetApplyForm = () => {
+    setFullName('')
+    setEmail('')
+    setCvFile(null)
+    setCoverLetterFile(null)
+    setSubmitError('')
+    setSubmitSuccess('')
+  }
+
+  const openApplyModal = (job: JobOpening | null) => {
+    setSelectedJob(job)
+    setIsApplyModalOpen(true)
+    setSubmitError('')
+    setSubmitSuccess('')
+  }
+
+  const closeApplyModal = () => {
+    setIsApplyModalOpen(false)
+    resetApplyForm()
+    setSelectedJob(null)
+  }
+
+  const handleApplicationSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setSubmitError('')
+    setSubmitSuccess('')
+
+    if (!fullName.trim() || !email.trim() || !cvFile || !coverLetterFile) {
+      setSubmitError('Please complete all required fields and upload both PDF files.')
+      return
+    }
+
+    if (cvFile.type !== 'application/pdf' || coverLetterFile.type !== 'application/pdf') {
+      setSubmitError('Only PDF files are allowed for CV and cover letter.')
+      return
+    }
+
+    const formData = new FormData()
+    formData.append('fullName', fullName.trim())
+    formData.append('email', email.trim())
+    formData.append('position', selectedJob?.title ?? 'General Application')
+    formData.append('cv', cvFile)
+    formData.append('coverLetter', coverLetterFile)
+
+    try {
+      setIsSubmitting(true)
+      const response = await fetch('/api/careers/apply', {
+        method: 'POST',
+        body: formData,
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        setSubmitError(result?.error ?? 'Unable to submit application right now. Please try again.')
+        return
+      }
+
+      setSubmitSuccess('Application sent successfully to rh@binova-holding.ca.')
+      setFullName('')
+      setEmail('')
+      setCvFile(null)
+      setCoverLetterFile(null)
+    } catch {
+      setSubmitError('Network error while sending your application. Please try again.')
+    } finally {
+      setIsSubmitting(false)
+    }
+  }
 
   return (
     <div
@@ -563,7 +687,51 @@ export default function CareersPage() {
         </section>
 
         {/* ════════════════ OPEN POSITIONS ════════════════ */}
-        <section className="py-20 lg:py-28">
+        <section className="py-20 lg:py-24">
+          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+            <motion.div
+              initial={{ opacity: 0, y: 20 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true, margin: '-60px' }}
+              transition={{ duration: 0.7 }}
+            >
+              <SectionHeading
+                eyebrow="Leadership"
+                title="Profiles"
+                subtitle="Core leadership, department heads, and strategic consultants across Binova sectors."
+              />
+            </motion.div>
+
+            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
+              {LEADERSHIP_PROFILES.map((profile, i) => (
+                <motion.div
+                  key={profile.id}
+                  initial={{ opacity: 0, y: 16 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: '-30px' }}
+                  transition={{ duration: 0.45, delay: i * 0.02, ease: [0.22, 1, 0.36, 1] }}
+                  className="rounded-xl border p-4"
+                  style={{
+                    background: 'rgba(255,255,255,0.86)',
+                    borderColor: '#E2E8F0',
+                    backdropFilter: 'blur(8px)',
+                  }}
+                >
+                  <div className="mb-2 inline-flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold"
+                    style={{ background: 'rgba(19,91,52,0.1)', color: '#135B34' }}>
+                    {String(profile.id).padStart(2, '0')}
+                  </div>
+                  <p className="text-sm leading-relaxed text-[#2D3748] font-sans">
+                    {profile.title}
+                  </p>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* ════════════════ OPEN POSITIONS ════════════════ */}
+        <section id="positions" className="py-20 lg:py-28">
           <div className="mx-auto max-w-4xl px-6 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
@@ -572,7 +740,7 @@ export default function CareersPage() {
               transition={{ duration: 0.7 }}
             >
               <SectionHeading
-                eyebrow="Opportunities"
+                eyebrow="Recruitment In Progress"
                 title="Open Positions"
                 subtitle={`${JOB_OPENINGS.length} roles currently open across multiple sectors and locations.`}
               />
@@ -600,6 +768,7 @@ export default function CareersPage() {
                   job={job}
                   isOpen={openIndex === i}
                   onToggle={() => setOpenIndex(openIndex === i ? null : i)}
+                  onApply={openApplyModal}
                 />
               ))}
             </div>
@@ -692,8 +861,9 @@ export default function CareersPage() {
                   >
                     View Openings
                   </Link>
-                  <Link
-                    href="/contact"
+                  <button
+                    type="button"
+                    onClick={() => openApplyModal(null)}
                     className="inline-flex items-center gap-2.5 rounded-2xl px-7 py-4 text-sm font-semibold text-white transition-all duration-300 hover:opacity-90 font-sans"
                     style={{
                       background: 'linear-gradient(135deg, #135B34, #1a8a4c)',
@@ -701,12 +871,140 @@ export default function CareersPage() {
                     }}
                   >
                     Apply Now <ArrowUpRight className="h-4 w-4" />
-                  </Link>
+                  </button>
                 </div>
               </div>
             </motion.div>
           </div>
         </section>
+
+        <AnimatePresence>
+          {isApplyModalOpen && (
+            <motion.div
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 px-4"
+              onClick={closeApplyModal}
+            >
+              <motion.div
+                initial={{ opacity: 0, y: 20, scale: 0.98 }}
+                animate={{ opacity: 1, y: 0, scale: 1 }}
+                exit={{ opacity: 0, y: 10, scale: 0.98 }}
+                transition={{ duration: 0.2 }}
+                onClick={(e) => e.stopPropagation()}
+                className="w-full max-w-2xl rounded-3xl border border-[#E2E8F0] bg-white p-7 shadow-2xl"
+              >
+                <div className="mb-5 flex items-start justify-between gap-4">
+                  <div>
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.25em] text-[#135B34] font-sans">Application Form</p>
+                    <h3 className="mt-2 text-2xl font-bold text-[#2D3748] font-display">
+                      {selectedJob ? selectedJob.title : 'General Application'}
+                    </h3>
+                    <p className="mt-1 text-xs text-[#4A5568] font-sans">
+                      Send your full name, email, CV (PDF), and cover letter (PDF) directly to rh@binova-holding.ca.
+                    </p>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={closeApplyModal}
+                    className="flex h-9 w-9 items-center justify-center rounded-full border border-[#E2E8F0] text-[#4A5568] transition-colors hover:text-[#135B34]"
+                    aria-label="Close"
+                  >
+                    <X className="h-4 w-4" />
+                  </button>
+                </div>
+
+                <form onSubmit={handleApplicationSubmit} className="space-y-4">
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.2em] text-[#4A5568] font-sans">
+                        Full Name
+                      </label>
+                      <input
+                        type="text"
+                        value={fullName}
+                        onChange={(e) => setFullName(e.target.value)}
+                        className="w-full rounded-xl border border-[#E2E8F0] px-3 py-2.5 text-sm text-[#2D3748] outline-none transition-colors focus:border-[#135B34] focus:ring-2 focus:ring-[#135B34]/20"
+                        placeholder="Your full name"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.2em] text-[#4A5568] font-sans">
+                        Email
+                      </label>
+                      <input
+                        type="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                        className="w-full rounded-xl border border-[#E2E8F0] px-3 py-2.5 text-sm text-[#2D3748] outline-none transition-colors focus:border-[#135B34] focus:ring-2 focus:ring-[#135B34]/20"
+                        placeholder="you@email.com"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  <div className="grid gap-4 sm:grid-cols-2">
+                    <div>
+                      <label className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.2em] text-[#4A5568] font-sans">
+                        CV (PDF)
+                      </label>
+                      <input
+                        type="file"
+                        accept="application/pdf"
+                        onChange={(e) => setCvFile(e.target.files?.[0] ?? null)}
+                        className="block w-full rounded-xl border border-[#E2E8F0] px-3 py-2 text-xs text-[#2D3748] file:mr-3 file:rounded-md file:border-0 file:bg-[#135B34]/10 file:px-2.5 file:py-1.5 file:text-xs file:font-semibold file:text-[#135B34]"
+                        required
+                      />
+                    </div>
+                    <div>
+                      <label className="mb-1.5 block text-xs font-semibold uppercase tracking-[0.2em] text-[#4A5568] font-sans">
+                        Cover Letter (PDF)
+                      </label>
+                      <input
+                        type="file"
+                        accept="application/pdf"
+                        onChange={(e) => setCoverLetterFile(e.target.files?.[0] ?? null)}
+                        className="block w-full rounded-xl border border-[#E2E8F0] px-3 py-2 text-xs text-[#2D3748] file:mr-3 file:rounded-md file:border-0 file:bg-[#135B34]/10 file:px-2.5 file:py-1.5 file:text-xs file:font-semibold file:text-[#135B34]"
+                        required
+                      />
+                    </div>
+                  </div>
+
+                  {submitError && (
+                    <p className="rounded-xl border border-red-200 bg-red-50 px-3 py-2 text-xs text-red-700">
+                      {submitError}
+                    </p>
+                  )}
+
+                  {submitSuccess && (
+                    <p className="rounded-xl border border-green-200 bg-green-50 px-3 py-2 text-xs text-green-700">
+                      {submitSuccess}
+                    </p>
+                  )}
+
+                  <div className="flex flex-wrap justify-end gap-2 pt-2">
+                    <button
+                      type="button"
+                      onClick={closeApplyModal}
+                      className="rounded-xl border border-[#E2E8F0] px-4 py-2 text-xs font-semibold text-[#4A5568] transition-colors hover:border-[#135B34]/40 hover:text-[#135B34]"
+                    >
+                      Cancel
+                    </button>
+                    <button
+                      type="submit"
+                      disabled={isSubmitting}
+                      className="inline-flex items-center gap-2 rounded-xl bg-gradient-to-r from-[#135B34] to-[#1a8a4c] px-5 py-2 text-xs font-semibold text-white transition-opacity disabled:cursor-not-allowed disabled:opacity-70"
+                    >
+                      {isSubmitting ? 'Sending…' : 'Send Application'} <Send className="h-3.5 w-3.5" />
+                    </button>
+                  </div>
+                </form>
+              </motion.div>
+            </motion.div>
+          )}
+        </AnimatePresence>
 
       </div>
     </div>

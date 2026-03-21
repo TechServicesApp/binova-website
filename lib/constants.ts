@@ -110,17 +110,17 @@ export const OFFICES = [
     country: 'Canada',
     flag: 'CA',
     type: 'type',
-    city: 'city',
+    city: 'Vancouver, British Columbia, Canada',
     email: 'mail',
-    phone: '....................',
+    phone: '+1(778)381-1325',
   },
   {
     country: 'Cameroon',
     flag: 'CM',
     type: 'type',
-    city: 'Kribi, Sud',
+    city: "Bel'air Road, Kribi, South, Cameroon.",
     email: 'mail',
-    phone: '+237 ..............',
+    phone: '(237)677151188',
   },
 ] as const
 
