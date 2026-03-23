@@ -23,6 +23,7 @@ type ContactForm = z.infer<typeof contactSchema>
 
 export default function ContactPage() {
   const [submitted, setSubmitted] = useState(false)
+  const [submitError, setSubmitError] = useState('')
 
   const {
     register,
@@ -34,11 +35,30 @@ export default function ContactPage() {
   })
 
   const onSubmit = async (data: ContactForm) => {
-    // Simulate submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
-    setSubmitted(true)
-    reset()
-    setTimeout(() => setSubmitted(false), 3000)
+    setSubmitError('')
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        setSubmitError(result?.error ?? 'Unable to send your message right now. Please try again.')
+        return
+      }
+
+      setSubmitted(true)
+      reset()
+      setTimeout(() => setSubmitted(false), 3000)
+    } catch {
+      setSubmitError('Network error. Please try again in a moment.')
+    }
   }
 
   return (
@@ -296,6 +316,12 @@ export default function ContactPage() {
                           </>
                         )}
                       </button>
+
+                      {submitError && (
+                        <p className="rounded-xl border border-red-200 bg-red-50 px-4 py-3 text-xs text-red-700 font-sans">
+                          {submitError}
+                        </p>
+                      )}
                     </form>
                   )}
                 </div>

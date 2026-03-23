@@ -17,44 +17,121 @@ interface Project {
   year: string
   status: Status
   description: string
+  image?: string
 }
 
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const SECTOR_COLORS: Record<string, string> = {
-  'Banking & Finance':    '#135B34',
-  'Mining & Resources':   '#D4AF37',
-  'Energy Industry':      '#1a8a4c',
-  'Agriculture':          '#2a9d5f',
-  'Public Works':         '#135B34',
-  'Health & Sciences':    '#D4AF37',
-  'Education & Training': '#1a8a4c',
-  'Telecom & Media':      '#D4AF37',
-  'Textile Industry':     '#135B34',
+  'Public Work and Real Estate': '#135B34',
+  'Transportation': '#1a5a8a',
+  'Energy': '#FF6B35',
+  'Health and Sciences': '#D4AF37',
+  'Education and Training': '#1a8a4c',
+  'Agriculture and Livestock': '#2a9d5f',
+  'Mining': '#8B7355',
 }
 
 const SECTOR_ICONS: Record<string, string> = {
-  'Banking & Finance':    '🏦',
-  'Mining & Resources':   '⛏️',
-  'Energy Industry':      '⚡',
-  'Agriculture':          '🌾',
-  'Public Works':         '🏗️',
-  'Health & Sciences':    '🔬',
-  'Education & Training': '🎓',
-  'Telecom & Media':      '📡',
-  'Textile Industry':     '🧵',
+  'Public Work and Real Estate': '🏗️',
+  'Transportation': '🚁',
+  'Energy': '⚡',
+  'Health and Sciences': '🏥',
+  'Education and Training': '🎓',
+  'Agriculture and Livestock': '🐄',
+  'Mining': '⛏️',
 }
 
 const PROJECTS: Project[] = [
-  { id: 1, title: 'title',  sector: 'Banking & Finance',   year: '2024', status: 'Completed',  description: 'description............' },
-  { id: 2, title: 'title',  sector: 'Mining & Resources',  year: '2024', status: 'In Progress',description: 'description............' },
-  { id: 3, title: 'title',  sector: 'Energy Industry',     year: '2025', status: 'In Progress',description: 'description............' },
-  { id: 4, title: 'title',  sector: 'Agriculture',         year: '2024', status: 'Completed',  description: 'description............' },
-  { id: 5, title: 'title',  sector: 'Public Works',        year: '2025', status: 'In Progress',description: 'description............' },
-  { id: 6, title: 'title',  sector: 'Health & Sciences',   year: '2024', status: 'Completed',  description: 'description............' },
-  { id: 7, title: 'title',  sector: 'Education & Training',year: '2025', status: 'Planning',   description: 'description............' },
-  { id: 8, title: 'title',   sector: 'Telecom & Media',     year: '2024', status: 'Completed',  description: 'description............' },
-  { id: 9, title: 'title',  sector: 'Textile Industry',    year: '2025', status: 'In Progress',description: 'description............' },
+  {
+    id: 1,
+    title: 'Binova Staff Residence',
+    sector: 'Public Work and Real Estate',
+    year: '2026',
+    status: 'In Progress',
+    description: 'To house its staff, the group wants to build around 130 four-story buildings, 20 duplexes, and a leisure center to accommodate around 10,000 people in its new industrial city, for an investment of about 70 million euros. The completion date is estimated for early 2028, with construction starting in December 2026.',
+    image: '/projets/binova-staff.jpg',
+  },
+  {
+    id: 2,
+    title: 'Binova Palace Hotel',
+    sector: 'Public Work and Real Estate',
+    year: '2026',
+    status: 'In Progress',
+    description: 'Project to build a 5-star, 250-room hotel in the Ocean department of southern Cameroon. The project represents an investment of 75 million euros and construction is scheduled to take two years.',
+  },
+  {
+    id: 3,
+    title: 'Southern Cameroon Airport',
+    sector: 'Transportation',
+    year: '2026',
+    status: 'In Progress',
+    description: 'Private initiative to build an ultra-modern international airport with 6 runways up to 3 km long. Estimated at 5 billion euros, Binova plans phased deployment to transform air transport, tourism, and business in Cameroon.',
+  },
+  {
+    id: 4,
+    title: '80MW Solar Power Plant',
+    sector: 'Energy',
+    year: '2026',
+    status: 'In Progress',
+    description: 'Estimated at 60 million euros, with a 20 MW storage unit and built on 100 hectares. Binova expects this project to reduce long-term electricity costs and guarantee clean, environmentally friendly energy for its factories.',
+  },
+  {
+    id: 5,
+    title: 'Dosage Form Pharmaceutical Manufacturing Unit',
+    sector: 'Health and Sciences',
+    year: '2027',
+    status: 'In Progress',
+    description: 'With an investment of approximately 100 million euros for the construction phase on a 7-hectare area, Binova is building its first state-of-the-art pharmaceutical manufacturing unit in Africa. Construction starts in early 2027 for 24 months in southern Cameroon.',
+  },
+  {
+    id: 6,
+    title: 'API and Biologics Manufacturing Unit',
+    sector: 'Health and Sciences',
+    year: '2027',
+    status: 'In Progress',
+    description: 'With an investment of approximately 140 million euros for the construction phase on a 12-hectare area, Binova is building its first state-of-the-art biotech manufacturing unit in Africa. Construction starts in early 2027 for 24 months in southern Cameroon.',
+  },
+  {
+    id: 7,
+    title: 'Holyframe University',
+    sector: 'Education and Training',
+    year: '2027',
+    status: 'In Progress',
+    description: 'Construction on a dedicated 100-hectare area including administrative buildings, amphitheaters, classrooms, tutorial rooms, laboratories, library, and restaurant to ensure high-value scientific and technological training. Start is planned for early 2027 over 3 years, with an initial 300 million euros first phase.',
+  },
+  {
+    id: 8,
+    title: 'Poultry Farming',
+    sector: 'Agriculture and Livestock',
+    year: '2027',
+    status: 'In Progress',
+    description: 'Plan to develop a modern farm with a capacity of 5 million animals for an investment of 60 million euros.',
+  },
+  {
+    id: 9,
+    title: 'Aluminium Production',
+    sector: 'Mining',
+    year: '2027',
+    status: 'In Progress',
+    description: 'Planned investment in aluminum production with a processing plant capacity of 750,000 tons per year to support demand from the automotive industry.',
+  },
+  {
+    id: 10,
+    title: 'Hospitals',
+    sector: 'Health and Sciences',
+    year: '2027',
+    status: 'In Progress',
+    description: 'Binova intends to build several reference hospitals and university hospitals in multiple African cities to improve medical care and patient experience.',
+  },
+  {
+    id: 11,
+    title: 'Drugs Distribution',
+    sector: 'Health and Sciences',
+    year: '2027',
+    status: 'In Progress',
+    description: 'Binova intends to build several drug distribution centers in all African capitals to facilitate access to quality medicine at the best prices.',
+  },
 ]
 
 const FILTERS = ['All', ...Object.keys(SECTOR_COLORS)]
@@ -135,8 +212,15 @@ function ProjectCard({ project, index, listView }: CardProps) {
       {/* Visual zone */}
       <div
         className={`relative flex items-center justify-center overflow-hidden flex-shrink-0 ${listView ? 'w-28' : 'h-44 w-full'}`}
-        style={{ background: `linear-gradient(135deg, ${color}15 0%, rgba(240,247,244,0.95) 100%)` }}
+        style={{ background: project.image ? 'transparent' : `linear-gradient(135deg, ${color}15 0%, rgba(240,247,244,0.95) 100%)` }}
       >
+        {project.image && (
+          <img
+            src={project.image}
+            alt={project.title}
+            className="absolute inset-0 h-full w-full object-cover"
+          />
+        )}
         <span
           className="select-none font-bold leading-none font-display"
           style={{

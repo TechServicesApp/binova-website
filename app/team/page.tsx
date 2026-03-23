@@ -18,6 +18,7 @@ interface TeamMember {
   location?: string
   linkedin?: string
   email?: string
+  image?: string
 }
 
 // ─── Avatar colors — one per member, cycling ─────────────────────────────────
@@ -125,23 +126,31 @@ function MemberCard({ member, index }: { member: TeamMember; index: number }) {
           />
           {/* Avatar */}
           <div
-            className="relative flex h-24 w-24 items-center justify-center rounded-full"
+            className="relative flex h-40 w-40 items-center justify-center rounded-full overflow-hidden"
             style={{
-              background: `radial-gradient(circle at 35% 35%, ${avatar.bg}, ${avatar.bg}dd)`,
+              background: member.image ? 'transparent' : `radial-gradient(circle at 35% 35%, ${avatar.bg}, ${avatar.bg}dd)`,
               boxShadow: hovered ? `0 0 28px ${deptColor}40` : '0 0 0 transparent',
               transition: 'box-shadow 0.4s ease',
             }}
           >
-            <span
-              className="font-bold tracking-tight font-display"
-              style={{
-                fontSize: 28,
-                color: avatar.text,
-                lineHeight: 1,
-              }}
-            >
-              {initials}
-            </span>
+            {member.image ? (
+              <img
+                src={member.image}
+                alt={`${member.firstName} ${member.lastName}`}
+                className="absolute inset-0 h-40 w-40 object-cover object-top"
+              />
+            ) : (
+              <span
+                className="font-bold tracking-tight font-display"
+                style={{
+                  fontSize: 28,
+                  color: avatar.text,
+                  lineHeight: 1,
+                }}
+              >
+                {initials}
+              </span>
+            )}
           </div>
 
           {/* Online dot */}

@@ -9,13 +9,45 @@ import { motion } from 'framer-motion'
 
 export function Footer() {
   const [email, setEmail] = useState('')
+  const [isSubscribing, setIsSubscribing] = useState(false)
+  const [subscribeError, setSubscribeError] = useState('')
+  const [subscribeSuccess, setSubscribeSuccess] = useState('')
   const [hoveredSocial, setHoveredSocial] = useState<string | null>(null)
 
-  const handleSubscribe = (e: React.FormEvent) => {
+  const handleSubscribe = async (e: React.FormEvent) => {
     e.preventDefault()
-    // Handle newsletter subscription
-    console.log('Subscribe:', email)
-    setEmail('')
+    setSubscribeError('')
+    setSubscribeSuccess('')
+
+    if (!email.trim()) {
+      setSubscribeError('Please enter a valid email address.')
+      return
+    }
+
+    try {
+      setIsSubscribing(true)
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: email.trim(), source: 'footer' }),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        setSubscribeError(result?.error ?? 'Unable to subscribe right now. Please try again.')
+        return
+      }
+
+      setSubscribeSuccess('Subscribed successfully.')
+      setEmail('')
+    } catch {
+      setSubscribeError('Network error. Please try again.')
+    } finally {
+      setIsSubscribing(false)
+    }
   }
 
   return (
@@ -74,24 +106,33 @@ export function Footer() {
                 </p>
               </div>
               
-              <form onSubmit={handleSubscribe} className="flex w-full max-w-md gap-2">
-                <div className="relative flex-1">
-                  <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#A0AEC0]" />
-                  <input
-                    type="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                    placeholder="Enter your email"
-                    className="w-full rounded-2xl border border-[#E2E8F0] bg-white pl-11 pr-4 py-3.5 text-sm text-[#2D3748] placeholder:text-[#A0AEC0] transition-all duration-300 focus:border-[#135B34] focus:outline-none focus:ring-2 focus:ring-[#135B34]/20 font-sans"
-                  />
+              <form onSubmit={handleSubscribe} className="w-full max-w-md space-y-2">
+                <div className="flex gap-2">
+                  <div className="relative flex-1">
+                    <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-4 w-4 text-[#A0AEC0]" />
+                    <input
+                      type="email"
+                      value={email}
+                      onChange={(e) => setEmail(e.target.value)}
+                      placeholder="Enter your email"
+                      className="w-full rounded-2xl border border-[#E2E8F0] bg-white pl-11 pr-4 py-3.5 text-sm text-[#2D3748] placeholder:text-[#A0AEC0] transition-all duration-300 focus:border-[#135B34] focus:outline-none focus:ring-2 focus:ring-[#135B34]/20 font-sans"
+                    />
+                  </div>
+                  <button
+                    type="submit"
+                    disabled={isSubscribing}
+                    className="group flex items-center gap-2 rounded-2xl bg-gradient-to-r from-[#135B34] to-[#1a8a4c] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-[#135B34]/25 hover:scale-105 disabled:cursor-not-allowed disabled:opacity-70 font-sans"
+                  >
+                    <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
+                    {isSubscribing ? 'Sending...' : 'Subscribe'}
+                  </button>
                 </div>
-                <button
-                  type="submit"
-                  className="group flex items-center gap-2 rounded-2xl bg-gradient-to-r from-[#135B34] to-[#1a8a4c] px-6 py-3.5 text-sm font-semibold text-white transition-all duration-300 hover:shadow-lg hover:shadow-[#135B34]/25 hover:scale-105 font-sans"
-                >
-                  <Send className="h-4 w-4 transition-transform group-hover:translate-x-0.5" />
-                  Subscribe
-                </button>
+                {subscribeError && (
+                  <p className="text-xs text-red-600 font-sans">{subscribeError}</p>
+                )}
+                {subscribeSuccess && (
+                  <p className="text-xs text-[#135B34] font-sans">{subscribeSuccess}</p>
+                )}
               </form>
             </div>
           </div>

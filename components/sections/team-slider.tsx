@@ -109,13 +109,23 @@ export function TeamSlider() {
                           <div
                             className="h-full w-full rounded-full flex items-center justify-center text-3xl md:text-4xl font-display font-bold text-white relative overflow-hidden"
                             style={{ 
-                              background: `linear-gradient(135deg, ${AVATAR_COLORS[i % AVATAR_COLORS.length]}30 0%, ${AVATAR_COLORS[i % AVATAR_COLORS.length]}50 100%)`,
+                              background: member.image ? 'transparent' : `linear-gradient(135deg, ${AVATAR_COLORS[i % AVATAR_COLORS.length]}30 0%, ${AVATAR_COLORS[i % AVATAR_COLORS.length]}50 100%)`,
                             }}
                           >
-                            <div className="absolute inset-0 bg-white/80" />
-                            <span className="relative z-10" style={{ color: AVATAR_COLORS[i % AVATAR_COLORS.length] }}>
-                              {member.firstName[0]}{member.lastName[0]}
-                            </span>
+                            {member.image ? (
+                              <img
+                                src={member.image}
+                                alt={`${member.firstName} ${member.lastName}`}
+                                className="absolute inset-0 h-full w-full object-cover object-top rounded-full"
+                              />
+                            ) : (
+                              <>
+                                <div className="absolute inset-0 bg-white/80" />
+                                <span className="relative z-10" style={{ color: AVATAR_COLORS[i % AVATAR_COLORS.length] }}>
+                                  {member.firstName[0]}{member.lastName[0]}
+                                </span>
+                              </>
+                            )}
                           </div>
                         </div>
                         {/* Pulsing ring */}

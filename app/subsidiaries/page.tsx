@@ -5,9 +5,8 @@ import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
 import { ArrowUpRight, ExternalLink } from 'lucide-react'
 import {
-  Landmark, Building2, FlaskConical, Layers, MonitorSmartphone,
-  Zap, Truck, UtensilsCrossed, Wheat, ShoppingCart,
-  Radio, GraduationCap, Car, Pickaxe,
+  Building2, FlaskConical, Zap, Pickaxe,
+  MonitorSmartphone,
 } from 'lucide-react'
 import type { LucideProps } from 'lucide-react'
 
@@ -22,97 +21,49 @@ interface Subsidiary {
   Icon: LucideIcon
   color: string
   description: string
+  website: string
   established: number
   focus: string[]
   continent: 'Africa' | 'North America' | 'Both'
 }
 
-// ─── Data — 14 subsidiaires réels Binova ─────────────────────────────────────
+// ─── Data — Binova subsidiaries ───────────────────────────────────────────────
 
 const SUBSIDIARIES: Subsidiary[] = [
   {
-    id: 1, name: 'Binova Banking & Finance', shortName: 'Banking & Finance',
-    Icon: Landmark, color: '#135B34', established: 2023, continent: 'Both',
-    description: 'Capital markets, investment vehicles and financial services tailored to the African economic landscape.',
-    focus: ['Capital Markets', 'Investment Banking', 'Microfinance'],
+    id: 1, name: 'Binova Rock Builders Ltd', shortName: 'Rock Builders',
+    Icon: Building2, color: '#135B34', established: 2023, continent: 'Both',
+    description: 'We are a construction company, and we build every kind of infrastructure ranging from residential (homes), commercial (offices, hotels), industrial (facilities, warehouse, power plant) to heavy civil (roads, bridges, airport, railway).',
+    website: 'www.binova-rockbuilders.com',
+    focus: ['Residential', 'Commercial', 'Industrial', 'Heavy Civil'],
   },
   {
-    id: 2, name: 'Binova Public Works', shortName: 'Public Works',
-    Icon: Building2, color: '#1a8a4c', established: 2023, continent: 'Africa',
-    description: 'Infrastructure, construction and civil engineering projects that connect communities and drive growth.',
-    focus: ['Road Infrastructure', 'Civil Engineering', 'Urban Development'],
+    id: 2, name: 'Binova Pharmaceuticals Ltd', shortName: 'Pharmaceuticals',
+    Icon: FlaskConical, color: '#D4AF37', established: 2023, continent: 'Africa',
+    description: 'We are a state of the art Pharmaceutical manufacturing company, highly regulated with sterile facilities, latest equipments and technology designed to produce almost every dosage form under strict GMP with a capacity of 20 billion tablets and capsules per year.',
+    website: 'www.binovapharma.com',
+    focus: ['GMP', 'Sterile Facilities', '20B Tablets & Capsules/Year'],
   },
   {
-    id: 3, name: 'Binova Health & Sciences', shortName: 'Health & Sciences',
-    Icon: FlaskConical, color: '#D4AF37', established: 2023, continent: 'Both',
-    description: 'Medical research, pharmaceutical innovation and healthcare delivery across Central and West Africa.',
-    focus: ['Medical Research', 'Pharma', 'Public Health'],
+    id: 3, name: 'Binova Energies Corporation Ltd', shortName: 'Energies',
+    Icon: Zap, color: '#1a8a4c', established: 2023, continent: 'Both',
+    description: 'We are a state of the art industries specialised in developing, manufacturing, and deploying innovative renewable technologies and advanced energy storage for individuals, homes, and industries.',
+    website: 'www.binovaenergies.com',
+    focus: ['Renewables', 'Energy Storage', 'Industrial Energy'],
   },
   {
-    id: 4, name: 'Binova Textile & Paper', shortName: 'Textile & Paper',
-    Icon: Layers, color: '#2a9d5f', established: 2024, continent: 'Africa',
-    description: 'Industrial textiles, sustainable packaging and paper products for domestic and export markets.',
-    focus: ['Industrial Textiles', 'Eco Packaging', 'Paper Manufacturing'],
+    id: 4, name: 'Binova Mining Corporation Ltd', shortName: 'Mining',
+    Icon: Pickaxe, color: '#D4AF37', established: 2023, continent: 'Both',
+    description: 'We are a large global mining group engaged in the exploration and extraction of natural resources ore like gold, silver, aluminium, tungsten, graphite, tin, iron...etc for global industrial use.',
+    website: 'www.binovamining.com',
+    focus: ['Exploration', 'Extraction', 'Global Industrial Supply'],
   },
   {
-    id: 5, name: 'Binova Electronics', shortName: 'Electronics',
-    Icon: MonitorSmartphone, color: '#135B34', established: 2024, continent: 'Both',
-    description: 'Consumer electronics, digital devices and technology solutions powering modern African households.',
-    focus: ['Consumer Electronics', 'Digital Devices', 'After-Sales'],
-  },
-  {
-    id: 6, name: 'Binova Energy Industry', shortName: 'Energy',
-    Icon: Zap, color: '#D4AF37', established: 2023, continent: 'Africa',
-    description: 'Oil, gas, renewables and smart energy grids supplying reliable power across the continent.',
-    focus: ['Solar Energy', 'Oil & Gas', 'Smart Grids'],
-  },
-  {
-    id: 7, name: 'Binova Transportation', shortName: 'Transportation',
-    Icon: Truck, color: '#1a8a4c', established: 2024, continent: 'Both',
-    description: 'End-to-end logistics, freight management and mobility solutions for businesses and individuals.',
-    focus: ['Freight Logistics', 'Last-Mile Delivery', 'Fleet Management'],
-  },
-  {
-    id: 8, name: 'Binova Foods & Beverages', shortName: 'Foods & Beverages',
-    Icon: UtensilsCrossed, color: '#D4AF37', established: 2023, continent: 'Africa',
-    description: 'Artisanal food brands, agro-processing facilities and distribution networks across the region.',
-    focus: ['Agro-Processing', 'Food Brands', 'Distribution'],
-  },
-  {
-    id: 9, name: 'Binova Agriculture & Livestock', shortName: 'Agriculture',
-    Icon: Wheat, color: '#2a9d5f', established: 2023, continent: 'Africa',
-    description: 'Sustainable farming, livestock management and agricultural supply chains feeding a growing continent.',
-    focus: ['Sustainable Farming', 'Livestock', 'Agri-Supply Chain'],
-  },
-  {
-    id: 10, name: 'Binova Supermarkets', shortName: 'Supermarkets',
-    Icon: ShoppingCart, color: '#135B34', established: 2024, continent: 'Africa',
-    description: 'Retail distribution and consumer goods reaching millions of households across urban and rural markets.',
-    focus: ['Retail Outlets', 'Consumer Goods', 'E-Commerce'],
-  },
-  {
-    id: 11, name: 'Binova Telecom & Media', shortName: 'Telecom & Media',
-    Icon: Radio, color: '#D4AF37', established: 2023, continent: 'Both',
-    description: 'Telecommunications infrastructure, broadcast networks and digital media platforms for the modern audience.',
-    focus: ['Telecom Infrastructure', 'Broadcasting', 'Digital Media'],
-  },
-  {
-    id: 12, name: 'Binova Education & Training', shortName: 'Education',
-    Icon: GraduationCap, color: '#1a8a4c', established: 2024, continent: 'Both',
-    description: 'Academic institutions, vocational programs and EdTech platforms shaping the next generation of leaders.',
-    focus: ['Higher Education', 'Vocational Training', 'EdTech'],
-  },
-  {
-    id: 13, name: 'Binova Automotive', shortName: 'Automotive',
-    Icon: Car, color: '#135B34', established: 2024, continent: 'Both',
-    description: 'Vehicle manufacturing, electric mobility innovation and after-sales services across two continents.',
-    focus: ['Vehicle Manufacturing', 'EV Innovation', 'After-Sales'],
-  },
-  {
-    id: 14, name: 'Binova Mining Industry', shortName: 'Mining',
-    Icon: Pickaxe, color: '#D4AF37', established: 2023, continent: 'Africa',
-    description: 'Mineral extraction, processing and resource management with a commitment to environmental stewardship.',
-    focus: ['Mineral Extraction', 'Processing Plants', 'Environmental Compliance'],
+    id: 5, name: 'Binova Sciences Ltd', shortName: 'Sciences',
+    Icon: MonitorSmartphone, color: '#2a9d5f', established: 2023, continent: 'Both',
+    description: 'We are a state of the art biotech production company, highly regulated with sterile facilities, latest equipments and technology designed to produce APIs, Biologics, and vaccines under strict GMP to supply big pharma.',
+    website: 'www.binovasciences.com',
+    focus: ['APIs', 'Biologics', 'Vaccines', 'GMP'],
   },
 ]
 
@@ -215,6 +166,16 @@ function SubsidiaryCard({ sub, index }: { sub: Subsidiary; index: number }) {
         >
           {sub.description}
         </p>
+
+        <a
+          href={`https://${sub.website}`}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="text-xs font-semibold underline-offset-4 hover:underline font-sans"
+          style={{ color: sub.color }}
+        >
+          {sub.website}
+        </a>
 
         {/* Focus tags */}
         <div className="flex flex-wrap gap-1.5">
@@ -345,8 +306,8 @@ export default function SubsidiariesPage() {
                 className="max-w-sm"
               >
                 <p className="text-sm leading-relaxed text-[#4A5568] font-sans">
-                  14 specialized entities operating across Africa and North America,
-                  each a leader in its sector — united by one vision of excellence.
+                  We are a growing group of companies, and we develop businesses in every domain anywhere in the world.
+                  Our subsidiaries are leaders, each in its sector - united by one vision of excellence.
                 </p>
 
                 {/* Continent badges */}

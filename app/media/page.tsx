@@ -336,6 +336,46 @@ function MastheadRule() {
 // ─── Main ──────────────────────────────────────────────────────────────────────
 export default function MediaPage() {
   const [activeCategory, setActiveCategory] = useState('All')
+  const [newsletterEmail, setNewsletterEmail] = useState('')
+  const [isNewsletterSubmitting, setIsNewsletterSubmitting] = useState(false)
+  const [newsletterError, setNewsletterError] = useState('')
+  const [newsletterSuccess, setNewsletterSuccess] = useState('')
+
+  const handleNewsletterSubscribe = async (event: React.FormEvent<HTMLFormElement>) => {
+    event.preventDefault()
+    setNewsletterError('')
+    setNewsletterSuccess('')
+
+    if (!newsletterEmail.trim()) {
+      setNewsletterError('Please enter a valid email address.')
+      return
+    }
+
+    try {
+      setIsNewsletterSubmitting(true)
+      const response = await fetch('/api/newsletter', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email: newsletterEmail.trim(), source: 'media-page' }),
+      })
+
+      const result = await response.json()
+
+      if (!response.ok) {
+        setNewsletterError(result?.error ?? 'Unable to subscribe right now. Please try again.')
+        return
+      }
+
+      setNewsletterSuccess('Subscribed successfully.')
+      setNewsletterEmail('')
+    } catch {
+      setNewsletterError('Network error. Please try again.')
+    } finally {
+      setIsNewsletterSubmitting(false)
+    }
+  }
 
   const featured = NEWS.find(n => n.featured)
   const rest = NEWS.filter(n => !n.featured)
@@ -538,18 +578,24 @@ export default function MediaPage() {
                   <p className="text-sm font-semibold text-[#2D3748] leading-snug font-display">
                     Receive our press releases directly in your inbox
                   </p>
-                  <div className="flex flex-col gap-2">
+                  <form onSubmit={handleNewsletterSubscribe} className="flex flex-col gap-2">
                     <input
                       type="email"
+                      value={newsletterEmail}
+                      onChange={(e) => setNewsletterEmail(e.target.value)}
                       placeholder="your@email.com"
                       className="rounded-xl border border-[#E2E8F0] px-3 py-2.5 text-xs text-[#2D3748] outline-none focus:border-[#135B34] focus:ring-2 focus:ring-[#135B34]/20 transition-colors bg-white font-sans"
                     />
                     <button
-                      className="flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:opacity-90 hover:shadow-lg bg-[#135B34] text-white font-sans"
+                      type="submit"
+                      disabled={isNewsletterSubmitting}
+                      className="flex items-center justify-center gap-2 rounded-xl py-2.5 text-xs font-bold uppercase tracking-wider transition-all duration-300 hover:opacity-90 hover:shadow-lg disabled:cursor-not-allowed disabled:opacity-70 bg-[#135B34] text-white font-sans"
                     >
-                      Subscribe <ArrowRight className="h-3.5 w-3.5" />
+                      {isNewsletterSubmitting ? 'Sending...' : 'Subscribe'} <ArrowRight className="h-3.5 w-3.5" />
                     </button>
-                  </div>
+                    {newsletterError && <p className="text-[11px] text-red-600 font-sans">{newsletterError}</p>}
+                    {newsletterSuccess && <p className="text-[11px] text-[#135B34] font-sans">{newsletterSuccess}</p>}
+                  </form>
                 </div>
               </div>
             </motion.section>

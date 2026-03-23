@@ -97,12 +97,12 @@ export const SECTORS = [
 ] as const
 
 export const TEAM_MEMBERS = [
-  { firstName: 'firstName', lastName: 'lastName', position: 'position', department: 'department' },
-  { firstName: 'firstName', lastName: 'lastName', position: 'position', department: 'department' },
-  { firstName: 'firstName', lastName: 'lastName', position: 'position', department: 'department' },
-  { firstName: 'firstName', lastName: 'lastName', position: 'position', department: 'department' },
-  { firstName: 'firstName', lastName: 'lastName', position: 'position', department: 'department' },
-  { firstName: 'firstName', lastName: 'lastName', position: 'position', department: 'department' },
+  { firstName: 'firstName', lastName: 'lastName', position: 'position', department: 'department', image: '/teams/membre1.png' },
+  { firstName: 'firstName', lastName: 'lastName', position: 'position', department: 'department', image: '/teams/membre2.png' },
+  { firstName: 'firstName', lastName: 'lastName', position: 'position', department: 'department', image: '/teams/membre3.png' },
+  { firstName: 'firstName', lastName: 'lastName', position: 'position', department: 'department', image: '/teams/membre4.png' },
+  //{ firstName: 'firstName', lastName: 'lastName', position: 'position', department: 'department', image: undefined },
+  //{ firstName: 'firstName', lastName: 'lastName', position: 'position', department: 'department', image: undefined },
 ] as const
 
 export const OFFICES = [

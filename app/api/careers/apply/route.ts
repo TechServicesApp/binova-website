@@ -1,5 +1,5 @@
 import { NextResponse } from 'next/server'
-import nodemailer from 'nodemailer'
+import { getMailerErrorMessage, sendScopedMail } from '@/lib/mailer'
 
 export const runtime = 'nodejs'
 
@@ -28,35 +28,21 @@ export async function POST(request: Request) {
       return NextResponse.json({ error: 'Each file must be 10MB or less.' }, { status: 400 })
     }
 
-    const smtpHost = process.env.SMTP_HOST
-    const smtpPort = Number(process.env.SMTP_PORT ?? 587)
-    const smtpUser = process.env.SMTP_USER
-    const smtpPass = process.env.SMTP_PASS
-    const mailFrom = process.env.MAIL_FROM ?? smtpUser
+    const hrEmail = process.env.HR_EMAIL
 
-    if (!smtpHost || !smtpUser || !smtpPass || !mailFrom) {
+    if (!hrEmail) {
       return NextResponse.json(
-        { error: 'Email service is not configured. Please set SMTP environment variables.' },
+        { error: 'Email service is not configured. Please set HR recipient environment variables.' },
         { status: 500 }
       )
     }
 
-    const transporter = nodemailer.createTransport({
-      host: smtpHost,
-      port: smtpPort,
-      secure: smtpPort === 465,
-      auth: {
-        user: smtpUser,
-        pass: smtpPass,
-      },
-    })
-
     const cvBuffer = Buffer.from(await cv.arrayBuffer())
     const coverLetterBuffer = Buffer.from(await coverLetter.arrayBuffer())
 
-    await transporter.sendMail({
-      from: mailFrom,
-      to: 'rh@binova-holding.ca',
+    await sendScopedMail({
+      scope: 'hr',
+      to: hrEmail,
       replyTo: email,
       subject: `New Application - ${position}`,
       text: [
@@ -88,6 +74,6 @@ export async function POST(request: Request) {
     return NextResponse.json({ ok: true })
   } catch (error) {
     console.error('Application email error:', error)
-    return NextResponse.json({ error: 'Failed to send application.' }, { status: 500 })
+    return NextResponse.json({ error: getMailerErrorMessage(error) }, { status: 500 })
   }
 }
