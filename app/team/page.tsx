@@ -112,10 +112,10 @@ function MemberCard({ member, index }: { member: TeamMember; index: number }) {
         {String(index + 1).padStart(2, '0')}
       </span>
 
-      <div className="relative flex w-full flex-col items-center px-8 pb-7 pt-9">
+      <div className="relative flex w-full flex-col items-center px-3 sm:px-4 md:px-6 lg:px-6 pb-4 md:pb-5 lg:pb-6 pt-5 md:pt-6 lg:pt-7">
 
         {/* Avatar circle */}
-        <div className="relative mb-5">
+        <div className="relative mb-3 md:mb-4 lg:mb-5">
           {/* Outer ring — spins on hover */}
           <div
             className="absolute -inset-2 rounded-full border-2 border-dashed transition-all duration-700"
@@ -126,7 +126,7 @@ function MemberCard({ member, index }: { member: TeamMember; index: number }) {
           />
           {/* Avatar */}
           <div
-            className="relative flex h-40 w-40 items-center justify-center rounded-full overflow-hidden"
+            className="relative flex h-16 w-16 sm:h-20 sm:w-20 md:h-28 md:w-28 lg:h-32 lg:w-32 items-center justify-center rounded-full overflow-hidden"
             style={{
               background: member.image ? 'transparent' : `radial-gradient(circle at 35% 35%, ${avatar.bg}, ${avatar.bg}dd)`,
               boxShadow: hovered ? `0 0 28px ${deptColor}40` : '0 0 0 transparent',
@@ -137,13 +137,13 @@ function MemberCard({ member, index }: { member: TeamMember; index: number }) {
               <img
                 src={member.image}
                 alt={`${member.firstName} ${member.lastName}`}
-                className="absolute inset-0 h-40 w-40 object-cover object-top"
+                className="absolute inset-0 h-full w-full object-cover object-top"
               />
             ) : (
               <span
                 className="font-bold tracking-tight font-display"
                 style={{
-                  fontSize: 28,
+                  fontSize: 'clamp(16px, 4vw, 28px)',
                   color: avatar.text,
                   lineHeight: 1,
                 }}
@@ -166,7 +166,7 @@ function MemberCard({ member, index }: { member: TeamMember; index: number }) {
 
         {/* Name */}
         <h3
-          className="text-xl font-bold transition-colors duration-300 font-display"
+          className="text-sm sm:text-base md:text-lg lg:text-xl font-bold transition-colors duration-300 font-display"
           style={{
             color: hovered ? '#135B34' : '#2D3748',
             lineHeight: 1.2,
@@ -179,17 +179,17 @@ function MemberCard({ member, index }: { member: TeamMember; index: number }) {
 
         {/* Gold separator */}
         <div
-          className="my-3 h-px w-10 transition-all duration-400"
+          className="my-1.5 md:my-2 lg:my-3 h-px md:h-1 w-6 md:w-8 lg:w-10 transition-all duration-400"
           style={{
             background: `linear-gradient(90deg, transparent, ${deptColor}, transparent)`,
-            width: hovered ? 48 : 36,
+            width: hovered ? 40 : 28,
             transition: 'width 0.4s ease',
           }}
         />
 
         {/* Position */}
         <p
-          className="text-xs font-bold uppercase tracking-[0.18em] font-sans"
+          className="text-[9px] sm:text-[10px] md:text-xs lg:text-xs font-bold uppercase tracking-[0.16em] font-sans"
           style={{ color: deptColor }}
         >
           {member.position}
@@ -197,7 +197,7 @@ function MemberCard({ member, index }: { member: TeamMember; index: number }) {
 
         {/* Department badge */}
         <span
-          className="mt-2 rounded-full px-3 py-0.5 text-[10px] font-semibold uppercase tracking-wider"
+          className="mt-1 md:mt-1.5 lg:mt-2 rounded-full px-2 sm:px-2.5 py-0.5 text-[7px] sm:text-[8px] md:text-[9px] font-semibold uppercase tracking-wider"
           style={{ background: `${deptColor}12`, color: `${deptColor}bb` }}
         >
           {member.department}
@@ -215,7 +215,7 @@ function MemberCard({ member, index }: { member: TeamMember; index: number }) {
 
         {/* Divider */}
         <div
-          className="my-5 w-full border-t border-[#E2E8F0]"
+          className="my-3 w-full border-t border-[#E2E8F0]"
         />
 
         {/* Social buttons */}
@@ -439,8 +439,8 @@ export default function TeamPage() {
         </div>
 
         {/* ════════════════ GRID ════════════════ */}
-        <section className="py-14 lg:py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <section className="py-10 sm:py-14 md:py-16 lg:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-7 lg:px-8">
             <AnimatePresence mode="wait">
               <motion.div
                 key={activeDept}
@@ -448,7 +448,7 @@ export default function TeamPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.3 }}
-                className="grid gap-5 md:grid-cols-2 lg:grid-cols-3"
+                className="grid gap-2 sm:gap-3 md:gap-4 lg:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4"
               >
                 {filtered.map((member, i) => (
                   <MemberCard key={`${member.firstName}-${member.lastName}`} member={member} index={i} />

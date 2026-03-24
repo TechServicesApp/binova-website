@@ -293,9 +293,6 @@ export function Footer() {
                   </h3>
                 </div>
                 
-                <p className="font-semibold text-[#2D3748] mb-4 font-display text-base">
-                  {office.type}
-                </p>
                 
                 <div className="space-y-3 text-sm text-[#4A5568] font-sans">
                   <div className="group/item flex items-start gap-3 transition-all duration-300 hover:text-[#135B34]">

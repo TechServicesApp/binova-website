@@ -186,7 +186,7 @@ const JOB_OPENINGS: JobOpening[] = [
     id: 4,
     title: 'Graphic Designer',
     department: 'Strategy',
-    location: 'Douala, Cameroon (On-site / Hybrid)',
+    location: 'Kribi, Cameroon (On-site / Hybrid)',
     type: 'Full-time',
     color: '#2a9d5f',
     description: 'Infographic and videographic design skills, combined with photography expertise, are needed to create comprehensive visual stories for social media, marketing, and corporate communication.',
@@ -686,49 +686,7 @@ export default function CareersPage() {
           </div>
         </section>
 
-        {/* ════════════════ OPEN POSITIONS ════════════════ */}
-        <section className="py-20 lg:py-24">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <motion.div
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              viewport={{ once: true, margin: '-60px' }}
-              transition={{ duration: 0.7 }}
-            >
-              <SectionHeading
-                eyebrow="Leadership"
-                title="Profiles"
-                subtitle="Core leadership, department heads, and strategic consultants across Binova sectors."
-              />
-            </motion.div>
-
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-3">
-              {LEADERSHIP_PROFILES.map((profile, i) => (
-                <motion.div
-                  key={profile.id}
-                  initial={{ opacity: 0, y: 16 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true, margin: '-30px' }}
-                  transition={{ duration: 0.45, delay: i * 0.02, ease: [0.22, 1, 0.36, 1] }}
-                  className="rounded-xl border p-4"
-                  style={{
-                    background: 'rgba(255,255,255,0.86)',
-                    borderColor: '#E2E8F0',
-                    backdropFilter: 'blur(8px)',
-                  }}
-                >
-                  <div className="mb-2 inline-flex h-6 w-6 items-center justify-center rounded-full text-[10px] font-bold"
-                    style={{ background: 'rgba(19,91,52,0.1)', color: '#135B34' }}>
-                    {String(profile.id).padStart(2, '0')}
-                  </div>
-                  <p className="text-sm leading-relaxed text-[#2D3748] font-sans">
-                    {profile.title}
-                  </p>
-                </motion.div>
-              ))}
-            </div>
-          </div>
-        </section>
+        
 
         {/* ════════════════ OPEN POSITIONS ════════════════ */}
         <section id="positions" className="py-20 lg:py-28">

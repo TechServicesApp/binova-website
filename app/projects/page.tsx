@@ -3,7 +3,8 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { ArrowUpRight, LayoutGrid, List, Tag } from 'lucide-react'
+import { ArrowUpRight, LayoutGrid, List, Tag, ChevronDown, ChevronUp } from 'lucide-react'
+import { PROJECTS as PROJECTS_DATA } from '@/lib/constants'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -42,97 +43,7 @@ const SECTOR_ICONS: Record<string, string> = {
   'Mining': '⛏️',
 }
 
-const PROJECTS: Project[] = [
-  {
-    id: 1,
-    title: 'Binova Staff Residence',
-    sector: 'Public Work and Real Estate',
-    year: '2026',
-    status: 'In Progress',
-    description: 'To house its staff, the group wants to build around 130 four-story buildings, 20 duplexes, and a leisure center to accommodate around 10,000 people in its new industrial city, for an investment of about 70 million euros. The completion date is estimated for early 2028, with construction starting in December 2026.',
-    image: '/projets/binova-staff.jpg',
-  },
-  {
-    id: 2,
-    title: 'Binova Palace Hotel',
-    sector: 'Public Work and Real Estate',
-    year: '2026',
-    status: 'In Progress',
-    description: 'Project to build a 5-star, 250-room hotel in the Ocean department of southern Cameroon. The project represents an investment of 75 million euros and construction is scheduled to take two years.',
-  },
-  {
-    id: 3,
-    title: 'Southern Cameroon Airport',
-    sector: 'Transportation',
-    year: '2026',
-    status: 'In Progress',
-    description: 'Private initiative to build an ultra-modern international airport with 6 runways up to 3 km long. Estimated at 5 billion euros, Binova plans phased deployment to transform air transport, tourism, and business in Cameroon.',
-  },
-  {
-    id: 4,
-    title: '80MW Solar Power Plant',
-    sector: 'Energy',
-    year: '2026',
-    status: 'In Progress',
-    description: 'Estimated at 60 million euros, with a 20 MW storage unit and built on 100 hectares. Binova expects this project to reduce long-term electricity costs and guarantee clean, environmentally friendly energy for its factories.',
-  },
-  {
-    id: 5,
-    title: 'Dosage Form Pharmaceutical Manufacturing Unit',
-    sector: 'Health and Sciences',
-    year: '2027',
-    status: 'In Progress',
-    description: 'With an investment of approximately 100 million euros for the construction phase on a 7-hectare area, Binova is building its first state-of-the-art pharmaceutical manufacturing unit in Africa. Construction starts in early 2027 for 24 months in southern Cameroon.',
-  },
-  {
-    id: 6,
-    title: 'API and Biologics Manufacturing Unit',
-    sector: 'Health and Sciences',
-    year: '2027',
-    status: 'In Progress',
-    description: 'With an investment of approximately 140 million euros for the construction phase on a 12-hectare area, Binova is building its first state-of-the-art biotech manufacturing unit in Africa. Construction starts in early 2027 for 24 months in southern Cameroon.',
-  },
-  {
-    id: 7,
-    title: 'Holyframe University',
-    sector: 'Education and Training',
-    year: '2027',
-    status: 'In Progress',
-    description: 'Construction on a dedicated 100-hectare area including administrative buildings, amphitheaters, classrooms, tutorial rooms, laboratories, library, and restaurant to ensure high-value scientific and technological training. Start is planned for early 2027 over 3 years, with an initial 300 million euros first phase.',
-  },
-  {
-    id: 8,
-    title: 'Poultry Farming',
-    sector: 'Agriculture and Livestock',
-    year: '2027',
-    status: 'In Progress',
-    description: 'Plan to develop a modern farm with a capacity of 5 million animals for an investment of 60 million euros.',
-  },
-  {
-    id: 9,
-    title: 'Aluminium Production',
-    sector: 'Mining',
-    year: '2027',
-    status: 'In Progress',
-    description: 'Planned investment in aluminum production with a processing plant capacity of 750,000 tons per year to support demand from the automotive industry.',
-  },
-  {
-    id: 10,
-    title: 'Hospitals',
-    sector: 'Health and Sciences',
-    year: '2027',
-    status: 'In Progress',
-    description: 'Binova intends to build several reference hospitals and university hospitals in multiple African cities to improve medical care and patient experience.',
-  },
-  {
-    id: 11,
-    title: 'Drugs Distribution',
-    sector: 'Health and Sciences',
-    year: '2027',
-    status: 'In Progress',
-    description: 'Binova intends to build several drug distribution centers in all African capitals to facilitate access to quality medicine at the best prices.',
-  },
-]
+const PROJECTS: Project[] = Array.isArray(PROJECTS_DATA) ? PROJECTS_DATA : Object.values(PROJECTS_DATA)
 
 const FILTERS = ['All', ...Object.keys(SECTOR_COLORS)]
 
@@ -186,46 +97,48 @@ interface CardProps { project: Project; index: number; listView: boolean }
 
 function ProjectCard({ project, index, listView }: CardProps) {
   const [hovered, setHovered] = useState(false)
+  const [expandedDesc, setExpandedDesc] = useState(false)
   const color  = getSectorColor(project.sector)
   const icon   = getSectorIcon(project.sector)
   const { bg: statusBg, color: statusColor } = statusStyle(project.status)
 
   return (
-    <motion.article
-      layout
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      exit={{ opacity: 0, scale: 0.97 }}
-      transition={{ duration: 0.5, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
-      className={`relative flex overflow-hidden rounded-2xl border cursor-pointer transition-all duration-400 ${listView ? 'flex-row' : 'flex-col'}`}
-      style={{
-        background: hovered ? 'rgba(247,249,250,0.95)' : 'rgba(255,255,255,0.9)',
-        borderColor: hovered ? `${color}50` : '#E2E8F0',
-        backdropFilter: 'blur(12px)',
-        transform: hovered && !listView ? 'translateY(-5px)' : 'none',
-        transition: 'all 0.4s ease',
-        boxShadow: hovered ? '0 10px 30px rgba(19,91,52,0.1)' : '0 2px 8px rgba(0,0,0,0.04)',
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-    >
+    <Link href={`/projects/${project.id}`}>
+      <motion.article
+        layout
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        exit={{ opacity: 0, scale: 0.97 }}
+        transition={{ duration: 0.5, delay: index * 0.07, ease: [0.22, 1, 0.36, 1] }}
+        className={`relative flex overflow-hidden rounded-2xl border cursor-pointer transition-all duration-400 ${listView ? 'flex-row' : 'flex-col'}`}
+        style={{
+          background: hovered ? 'rgba(247,249,250,0.95)' : 'rgba(255,255,255,0.9)',
+          borderColor: hovered ? `${color}50` : '#E2E8F0',
+          backdropFilter: 'blur(12px)',
+          transform: hovered && !listView ? 'translateY(-5px)' : 'none',
+          transition: 'all 0.4s ease',
+          boxShadow: hovered ? '0 10px 30px rgba(19,91,52,0.1)' : '0 2px 8px rgba(0,0,0,0.04)',
+        }}
+        onMouseEnter={() => setHovered(true)}
+        onMouseLeave={() => setHovered(false)}
+      >
       {/* Visual zone */}
       <div
-        className={`relative flex items-center justify-center overflow-hidden flex-shrink-0 ${listView ? 'w-28' : 'h-44 w-full'}`}
+        className={`relative flex items-center justify-center overflow-hidden flex-shrink-0 ${listView ? 'w-16 sm:w-20 md:w-24 lg:w-28' : 'h-32 sm:h-36 md:h-40 lg:h-44 w-full'}`}
         style={{ background: project.image ? 'transparent' : `linear-gradient(135deg, ${color}15 0%, rgba(240,247,244,0.95) 100%)` }}
       >
         {project.image && (
           <img
             src={project.image}
             alt={project.title}
-            className="absolute inset-0 h-full w-full object-cover"
+            className="absolute inset-0 h-full w-full object-cover z-10"
           />
         )}
         <span
-          className="select-none font-bold leading-none font-display"
+          className="select-none font-bold leading-none font-display z-0"
           style={{
-            fontSize: listView ? 36 : 80,
-            color: hovered ? 'rgba(19,91,52,0.08)' : 'rgba(19,91,52,0.04)',
+            fontSize: listView ? 'clamp(24px, 8vw, 36px)' : 'clamp(48px, 12vw, 80px)',
+            color: hovered ? 'rgba(19,91,52,0.05)' : 'rgba(19,91,52,0.02)',
             transition: 'color 0.4s',
           }}
         >
@@ -250,7 +163,7 @@ function ProjectCard({ project, index, listView }: CardProps) {
 
         {/* Status badge */}
         <span
-          className="absolute top-3 right-3 rounded-full px-2.5 py-1 text-[9px] font-bold uppercase tracking-wider"
+          className="absolute top-2 sm:top-3 right-2 sm:right-3 rounded-full px-2 sm:px-2.5 py-0.5 sm:py-1 text-[7px] sm:text-[9px] font-bold uppercase tracking-wider"
           style={{ background: statusBg, color: statusColor }}
         >
           {project.status}
@@ -258,9 +171,9 @@ function ProjectCard({ project, index, listView }: CardProps) {
       </div>
 
       {/* Body */}
-      <div className={`flex flex-1 flex-col gap-2 p-5 ${listView ? 'flex-row items-center gap-6' : ''}`}>
-        <div className={`flex ${listView ? 'min-w-[160px] flex-col gap-1' : 'items-center justify-between'}`}>
-          <span className="font-mono text-xs font-semibold" style={{ color }}>
+      <div className={`flex flex-1 flex-col gap-1 sm:gap-2 p-3 sm:p-4 md:p-5 ${listView ? 'flex-row items-center gap-4 sm:gap-6' : ''}`}>
+        <div className={`flex ${listView ? 'min-w-[140px] sm:min-w-[160px] flex-col gap-1' : 'items-center justify-between'}`}>
+          <span className="font-mono text-[10px] sm:text-xs font-semibold" style={{ color }}>
             {project.year}
           </span>
           <span
@@ -272,9 +185,9 @@ function ProjectCard({ project, index, listView }: CardProps) {
         </div>
 
         <h3
-          className="font-bold leading-snug transition-colors duration-300 font-display"
+          className="font-bold leading-snug transition-colors duration-300 font-display text-sm sm:text-base md:text-lg"
           style={{
-            fontSize: listView ? 15 : 17,
+            fontSize: listView ? 'clamp(13px, 3vw, 15px)' : 'clamp(15px, 4vw, 18px)',
             color: hovered ? '#135B34' : '#2D3748',
             flex: listView ? '1' : undefined,
           }}
@@ -283,15 +196,38 @@ function ProjectCard({ project, index, listView }: CardProps) {
         </h3>
 
         {!listView && (
-          <p className="flex-1 text-sm leading-relaxed text-[#4A5568] font-sans">
-            {project.description}
-          </p>
+          <div className="flex-1">
+            <p className={`text-xs sm:text-sm leading-relaxed text-[#4A5568] font-sans ${expandedDesc ? '' : 'line-clamp-2'}`}>
+              {project.description}
+            </p>
+            <button
+              onClick={(e) => {
+                e.preventDefault()
+                e.stopPropagation()
+                setExpandedDesc(!expandedDesc)
+              }}
+              className="mt-3 flex items-center gap-1.5 text-xs font-semibold text-[#135B34] hover:text-[#1a8a4c] transition-colors"
+            >
+              {expandedDesc ? (
+                <>
+                  <ChevronUp className="h-3.5 w-3.5" />
+                  Voir moins
+                </>
+              ) : (
+                <>
+                  <ChevronDown className="h-3.5 w-3.5" />
+                  Voir plus
+                </>
+              )}
+            </button>
+          </div>
         )}
 
         <div
           className={`flex items-center justify-between pt-3 ${listView ? 'pt-0 border-0' : 'border-t border-[#E2E8F0]'}`}
         >
           <span className="text-[11px] text-[#A0AEC0] font-sans">Binova Group</span>
+         {/* View Details */}
           <span
             className="flex items-center gap-1 text-xs font-semibold transition-all duration-300"
             style={{
@@ -305,9 +241,11 @@ function ProjectCard({ project, index, listView }: CardProps) {
             <ArrowUpRight className="h-3.5 w-3.5 transition-transform duration-300"
               style={{ transform: hovered ? 'translate(2px,-2px)' : 'none' }} />
           </span>
+          
         </div>
       </div>
-    </motion.article>
+      </motion.article>
+    </Link>
   )
 }
 
@@ -341,12 +279,12 @@ export default function ProjectsPage() {
       <div className="relative z-10">
 
         {/* ════ HERO ════ */}
-        <section className="relative overflow-hidden pt-32 pb-16">
+        <section className="relative overflow-hidden pt-20 sm:pt-24 md:pt-28 lg:pt-32 pb-12 sm:pb-14 md:pb-16 lg:pb-20">
           {/* Large editorial BG text */}
           <div aria-hidden className="pointer-events-none absolute left-0 top-1/2 -translate-y-1/2 select-none"
             style={{
               fontFamily: "var(--font-display)",
-              fontSize: 'clamp(100px,18vw,220px)',
+              fontSize: 'clamp(80px, 20vw, 220px)',
               fontWeight: 700,
               color: 'rgba(19,91,52,0.025)',
               letterSpacing: '-0.04em',
@@ -357,30 +295,30 @@ export default function ProjectsPage() {
             PROJECTS
           </div>
 
-          <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
+          <div className="relative mx-auto max-w-7xl px-4 sm:px-6 md:px-7 lg:px-8">
             {/* Breadcrumb */}
             <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5 }}
-              className="mb-8 flex items-center gap-2 text-xs font-sans text-[#A0AEC0]">
+              className="mb-6 sm:mb-7 md:mb-8 flex items-center gap-2 text-xs sm:text-sm font-sans text-[#A0AEC0]">
               <Link href="/" className="transition-colors hover:text-[#135B34]">Home</Link>
               <span>/</span>
-              <span className="text-[#135B34]">Projects</span>
+              <span className="text-[#135B34] font-semibold">Projects</span>
             </motion.div>
 
             {/* Title row */}
-            <div className="flex flex-col gap-6 lg:flex-row lg:items-end lg:justify-between">
+            <div className="flex flex-col gap-6 sm:gap-7 md:gap-8 lg:flex-row lg:items-end lg:justify-between">
               <motion.div initial={{ opacity: 0, y: 24 }} animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
-                <div className="mb-4 flex items-center gap-3">
-                  <span className="block h-px w-8 bg-[#135B34]" />
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#135B34] font-sans">
+                <div className="mb-3 sm:mb-4 flex items-center gap-2 sm:gap-3">
+                  <span className="block h-px w-6 sm:w-7 md:w-8 bg-[#135B34]" />
+                  <span className="text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.3em] text-[#135B34] font-sans">
                     Portfolio &amp; Achievements
                   </span>
                 </div>
                 <h1
                   className="font-bold leading-[0.95] text-[#2D3748] font-display"
                   style={{
-                    fontSize: 'clamp(52px, 9vw, 96px)',
+                    fontSize: 'clamp(42px, 8vw, 96px)',
                   }}
                 >
                   Our<br />
@@ -396,38 +334,40 @@ export default function ProjectsPage() {
               </motion.div>
 
               <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.4 }}
-                className="text-right text-sm lg:flex-shrink-0 text-[#A0AEC0] font-sans">
-                <div>{PROJECTS.length} Projects Tracked</div>
-                <div>2024 — 2025</div>
+                className="text-right text-xs sm:text-sm lg:flex-shrink-0 text-[#A0AEC0] font-sans">
+                <div className="font-semibold text-[#135B34]">{PROJECTS.length}</div>
+                <div>Projects Tracked</div>
+                <div className="mt-1 text-[11px]">2024 — 2025</div>
               </motion.div>
             </div>
 
             {/* Stats bar */}
             <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.25, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}>
+              transition={{ delay: 0.25, duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+              className="mt-8 sm:mt-10 md:mt-12">
               <StatsBar />
             </motion.div>
 
             {/* Divider */}
             <motion.div initial={{ scaleX: 0 }} animate={{ scaleX: 1 }}
               transition={{ duration: 1, delay: 0.3, ease: [0.22, 1, 0.36, 1] }}
-              className="mt-10 h-px origin-left"
+              className="mt-10 sm:mt-12 md:mt-16 h-px origin-left"
               style={{ background: 'linear-gradient(90deg, #135B34, rgba(19,91,52,0.1), transparent)' }} />
           </div>
         </section>
 
         {/* ════ FILTER BAR ════ */}
         <div
-          className="sticky top-20 z-30 border-b border-[#E2E8F0] backdrop-blur-[20px] bg-white/90 shadow-sm"
+          className="sticky top-16 sm:top-20 z-30 border-b border-[#E2E8F0] backdrop-blur-[20px] bg-white/90 shadow-sm"
         >
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
-            <div className="flex items-center gap-2 overflow-x-auto py-4" style={{ scrollbarWidth: 'none' }}>
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-7 lg:px-8">
+            <div className="flex items-center gap-2 overflow-x-auto py-3 sm:py-4" style={{ scrollbarWidth: 'none' }}>
               {FILTERS.map(f => {
                 const isActive = filter === f
                 const color    = f === 'All' ? '#34D399' : getSectorColor(f)
                 return (
                   <button key={f} onClick={() => setFilter(f)}
-                    className="flex-shrink-0 rounded-full px-4 py-1.5 text-[11px] font-semibold uppercase tracking-wider transition-all duration-300 font-sans"
+                    className="flex-shrink-0 rounded-full px-3 sm:px-4 py-1 sm:py-1.5 text-[10px] sm:text-[11px] font-semibold uppercase tracking-wider transition-all duration-300 font-sans hover:shadow-md"
                     style={{
                       color: isActive ? '#FFFFFF' : '#4A5568',
                       background: isActive ? color : 'transparent',
@@ -443,18 +383,18 @@ export default function ProjectsPage() {
         </div>
 
         {/* ════ GRID ════ */}
-        <section className="py-14 lg:py-20">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <section className="py-10 sm:py-14 md:py-16 lg:py-20">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-7 lg:px-8">
 
             {/* Section label + view toggle */}
-            <div className="mb-8 flex items-center justify-between">
-              <div className="flex items-center gap-2.5">
-                <Tag className="h-3.5 w-3.5 text-[#135B34]" />
-                <span className="text-[11px] font-semibold uppercase tracking-[0.22em] text-[#135B34] font-sans">
+            <div className="mb-6 sm:mb-8 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+              <div className="flex items-center gap-2 sm:gap-3">
+                <Tag className="h-3.5 w-3.5 text-[#135B34] flex-shrink-0" />
+                <span className="text-[10px] sm:text-[11px] font-semibold uppercase tracking-[0.22em] text-[#135B34] font-sans">
                   {filter === 'All' ? 'All Projects' : filter}
                 </span>
                 <span
-                  className="rounded-full px-2.5 py-0.5 font-mono text-[10px] bg-[#F0F7F4] text-[#135B34]"
+                  className="rounded-full px-2 sm:px-2.5 py-0.5 font-mono text-[9px] sm:text-[10px] font-semibold bg-[#F0F7F4] text-[#135B34]"
                 >
                   {filtered.length}
                 </span>
@@ -467,7 +407,7 @@ export default function ProjectsPage() {
                   <button
                     key={mode}
                     onClick={() => setViewMode(mode)}
-                    className="flex h-8 w-8 items-center justify-center rounded-lg border transition-all duration-200"
+                    className="flex h-8 w-8 sm:h-9 sm:w-9 items-center justify-center rounded-lg border transition-all duration-200"
                     style={{
                       background: viewMode === mode ? 'rgba(19,91,52,0.1)' : 'transparent',
                       borderColor: viewMode === mode ? 'rgba(19,91,52,0.3)' : '#E2E8F0',
@@ -489,8 +429,8 @@ export default function ProjectsPage() {
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.3 }}
                 className={viewMode === 'grid'
-                  ? 'grid gap-5 md:grid-cols-2 lg:grid-cols-3'
-                  : 'flex flex-col gap-3'
+                  ? 'grid gap-3 sm:gap-4 md:gap-5 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3'
+                  : 'flex flex-col gap-2 sm:gap-3'
                 }
               >
                 {filtered.length > 0 ? (
@@ -498,7 +438,7 @@ export default function ProjectsPage() {
                     <ProjectCard key={project.id} project={project} index={i} listView={viewMode === 'list'} />
                   ))
                 ) : (
-                  <div className="col-span-full py-24 text-center text-sm text-[#A0AEC0] font-sans">
+                  <div className="col-span-full py-20 text-center text-sm text-[#A0AEC0] font-sans">
                     No projects in this category yet.
                   </div>
                 )}
@@ -508,14 +448,14 @@ export default function ProjectsPage() {
         </section>
 
         {/* ════ CTA ════ */}
-        <section className="pb-24 lg:pb-32">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <section className="pb-20 sm:pb-24 md:pb-28 lg:pb-32">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-7 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
-              className="relative overflow-hidden rounded-3xl border border-[#135B34]/20 p-12 md:p-14 bg-gradient-to-br from-[#F0F7F4] to-white shadow-lg"
+              className="relative overflow-hidden rounded-2xl sm:rounded-3xl border border-[#135B34]/20 p-6 sm:p-8 md:p-10 lg:p-12 lg:p-14 bg-gradient-to-br from-[#F0F7F4] to-white shadow-lg"
             >
               {/* Top accent */}
               <div className="absolute top-0 left-0 right-0 h-px"
@@ -533,17 +473,17 @@ export default function ProjectsPage() {
                 WORK
               </div>
 
-              <div className="relative flex flex-col gap-8 lg:flex-row lg:items-center lg:justify-between">
+              <div className="relative flex flex-col gap-6 sm:gap-7 md:gap-8 lg:flex-row lg:items-center lg:justify-between">
                 <div>
-                  <p className="mb-3 text-[10px] font-semibold uppercase tracking-[0.3em] text-[#135B34] font-sans">
+                  <p className="mb-2 sm:mb-3 text-[9px] sm:text-[10px] font-semibold uppercase tracking-[0.3em] text-[#135B34] font-sans">
                     Let's Build Together
                   </p>
                   <h2
-                    className="text-3xl font-bold text-[#2D3748] md:text-4xl font-display"
+                    className="text-2xl sm:text-3xl md:text-4xl font-bold text-[#2D3748] font-display leading-snug"
                   >
                     Have a project in mind?
                   </h2>
-                  <p className="mt-4 max-w-lg text-sm leading-relaxed text-[#4A5568] font-sans">
+                  <p className="mt-3 sm:mt-4 max-w-lg text-sm sm:text-base leading-relaxed text-[#4A5568] font-sans">
                     Binova Holding Group brings together expertise across 14 sectors to deliver
                     world-class projects. Let's discuss your vision.
                   </p>
@@ -551,7 +491,7 @@ export default function ProjectsPage() {
 
                 <Link
                   href="/contact"
-                  className="inline-flex flex-shrink-0 items-center gap-2.5 rounded-2xl px-7 py-4 text-sm font-semibold text-white transition-all duration-300 hover:opacity-90 hover:shadow-lg bg-gradient-to-r from-[#135B34] to-[#1a8a4c] font-sans"
+                  className="inline-flex flex-shrink-0 items-center gap-2 sm:gap-2.5 rounded-2xl px-5 sm:px-6 md:px-7 py-3 sm:py-4 text-sm font-semibold text-white transition-all duration-300 hover:opacity-90 hover:shadow-lg bg-gradient-to-r from-[#135B34] to-[#1a8a4c] font-sans whitespace-nowrap"
                 >
                   Contact Us
                   <ArrowUpRight className="h-4 w-4" />

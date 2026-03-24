@@ -356,9 +356,7 @@ export default function ContactPage() {
                       <span className="text-3xl">{office.flag === 'CA' ? '\uD83C\uDDE8\uD83C\uDDE6' : '\uD83C\uDDE8\uD83C\uDDF2'}</span>
                       <div>
                         <h3 className="font-sans text-lg font-semibold text-[#2D3748]">{office.country}</h3>
-                        <span className="inline-flex items-center gap-1 rounded-full px-2 py-0.5 text-[10px] font-medium text-[#135B34] font-sans" style={{ background: 'rgba(19,91,52,0.1)' }}>
-                          {office.type}
-                        </span>
+                        
                       </div>
                     </div>
                     <div className="space-y-3.5">
