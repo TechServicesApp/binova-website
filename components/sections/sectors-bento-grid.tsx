@@ -35,7 +35,7 @@ const NR = 33   // node radius
 
 const SECTORS: Sector[] = [
   { id: 0,  name: 'Banking\n& Finance',      shortName: 'Banking & Finance',      Icon: Landmark,          color: '#6EE7B7', description: 'Capital markets, banking & financial services' },
-  { id: 1,  name: 'Public\nWorks',           shortName: 'Public Works',           Icon: Building2,         color: '#93C5FD', description: 'Infrastructure, construction & civil engineering' },
+  { id: 1,  name: 'Public Works\n& Real Estate',           shortName: 'Public Works & Real Estate',           Icon: Building2,         color: '#93C5FD', description: 'Infrastructure, construction & civil engineering' },
   { id: 2,  name: 'Health &\nSciences',      shortName: 'Health & Sciences',      Icon: FlaskConical,      color: '#F9A8D4', description: 'Medical research, pharma & healthcare innovation' },
   { id: 3,  name: 'Textile &\nPaper',        shortName: 'Textile & Paper',        Icon: Layers,            color: '#FDE68A', description: 'Industrial textiles, packaging & paper products' },
   { id: 4,  name: 'Electronics',             shortName: 'Electronics',            Icon: MonitorSmartphone, color: '#C4B5FD', description: 'Consumer electronics & digital devices' },
@@ -46,8 +46,9 @@ const SECTORS: Sector[] = [
   { id: 9,  name: 'Supermarkets',            shortName: 'Supermarkets',           Icon: ShoppingCart,      color: '#FCA5A5', description: 'Retail distribution & consumer goods' },
   { id: 10, name: 'Telecom\n& Media',        shortName: 'Telecom & Media',        Icon: Radio,             color: '#FDBA74', description: 'Telecommunications, broadcast & digital media' },
   { id: 11, name: 'Education\n& Training',   shortName: 'Education & Training',   Icon: GraduationCap,     color: '#A5F3FC', description: 'Academic institutions, vocational & EdTech platforms' },
-  { id: 12, name: 'Automotive',              shortName: 'Automotive',             Icon: Car,               color: '#FCA5A5', description: 'Vehicle manufacturing, EV & mobility innovation' },
+  { id: 12, name: 'Automotive\n& Aerospace', shortName: 'Automotive & Aerospace', Icon: Car,               color: '#FCA5A5', description: 'Vehicle manufacturing, EV & mobility innovation' },
   { id: 13, name: 'Mining\nIndustry',        shortName: 'Mining Industry',        Icon: Pickaxe,           color: '#E2B976', description: 'Mineral extraction, processing & resource management' },
+  { id: 14, name: 'Logistics\nTransportation',        shortName: 'Logistics & Transportation',        Icon: Truck,           color: '#FCA5A5', description: 'Supply chain management, freight & distribution' },
 ]
 
 // ─── Geometry helpers ─────────────────────────────────────────────────────────

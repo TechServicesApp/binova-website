@@ -460,7 +460,7 @@ export default function TeamPage() {
                 className="grid gap-2 sm:gap-3 md:gap-4 lg:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4"
               >
                 {filtered.map((member, i) => (
-                  <MemberCard key={`${member.firstName}-${i}`} member={member} index={i} />
+                  <MemberCard key={`${member.firstName}-${member.lastName}`} member={member} index={i} />
                 ))}
               </motion.div>
             </AnimatePresence>
