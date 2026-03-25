@@ -226,7 +226,7 @@ function ProjectCard({ project, index, listView }: CardProps) {
         <div
           className={`flex items-center justify-between pt-3 ${listView ? 'pt-0 border-0' : 'border-t border-[#E2E8F0]'}`}
         >
-          <span className="text-[11px] text-[#A0AEC0] font-sans">Binova Group</span>
+          <span className="text-[11px] text-[#A0AEC0] font-sans">Binova Holding Group</span>
          {/* View Details */}
           <span
             className="flex items-center gap-1 text-xs font-semibold transition-all duration-300"

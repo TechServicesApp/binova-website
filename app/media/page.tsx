@@ -648,7 +648,7 @@ export default function MediaPage() {
         {/* ═══ FOOTER ═══ */}
         <footer className="mt-16 sm:mt-20 mb-8 flex flex-col items-center justify-between gap-4 border-t border-[#E2E8F0] pt-8 sm:flex-row">
           <span className="text-[10px] uppercase tracking-widest text-[#A0AEC0] font-display text-center">
-            ©️ 2026 Binova Group — All rights reserved
+            ©️ 2026 Binova Holding Group — All rights reserved
           </span>
           <div className="flex flex-wrap items-center justify-center gap-4 sm:gap-6">
             {['Privacy Policy', 'Press Contact', 'Legal Notice'].map(l => (

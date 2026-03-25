@@ -195,7 +195,7 @@ function SubsidiaryCard({ sub, index }: { sub: Subsidiary; index: number }) {
           className="flex items-center justify-between border-t border-[#E2E8F0] pt-4"
         >
           <span className="text-[10px] font-semibold uppercase tracking-wider text-[#A0AEC0] font-sans">
-            Binova Group
+            Binova Holding Group
           </span>
           <span
             className="flex items-center gap-1.5 text-xs font-semibold transition-all duration-300"
@@ -278,7 +278,7 @@ export default function SubsidiariesPage() {
                 <div className="mb-4 flex items-center gap-3">
                   <span className="block h-px w-8 bg-[#135B34]" />
                   <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#135B34] font-sans">
-                    The Binova Group
+                    The Binova Holding Group
                   </span>
                 </div>
                 <h1
@@ -431,7 +431,7 @@ export default function SubsidiariesPage() {
                   </h2>
                   <p className="mt-4 max-w-lg text-sm leading-relaxed text-[#4A5568] font-sans">
                     Each subsidiary operates with full autonomy while benefiting from the strength
-                    of the Binova Group. Let's explore how we can work together.
+                    of the Binova Holding Group. Let's explore how we can work together.
                   </p>
                 </div>
 

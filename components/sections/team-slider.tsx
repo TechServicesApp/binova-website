@@ -248,7 +248,7 @@ export function TeamSlider() {
               <text x="14" y="15.5" textAnchor="middle" fontSize="7" fontWeight="bold" fill={GOLD} fontFamily="Georgia, serif" letterSpacing="1">B</text>
             </svg>
             <div>
-              <p className="text-[7px] font-bold uppercase tracking-[0.6em]" style={{ color: `${INK}40`, fontFamily: 'system-ui' }}>Binova Group</p>
+              <p className="text-[7px] font-bold uppercase tracking-[0.6em]" style={{ color: `${INK}40`, fontFamily: 'system-ui' }}>Binova Holding Group</p>
               <p className="text-[8px]" style={{ color: GOLD }}>The Leadership Collection</p>
             </div>
           </div>

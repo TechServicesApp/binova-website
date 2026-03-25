@@ -160,7 +160,7 @@ export function Footer() {
               >
                 <img
                   src="/LogoBinova.png"
-                  alt="Binova Group"
+                  alt="Binova Holding Group"
                   className="w-full h-full object-contain"
                 />
               </motion.div>
