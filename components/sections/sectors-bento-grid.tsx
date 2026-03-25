@@ -450,7 +450,7 @@ export function SectorsBentoGrid() {
   ]
 
   const stats: StatCardProps[] = [
-    { value: `${SECTORS.length}`, label: 'Sectors',    accent: '#135B34' },
+    { value: '15 + ', label: 'Sectors',    accent: '#135B34' },
     { value: '2',                 label: 'Continents', accent: '#D4AF37' },
     { value: '50+',               label: 'Experts',    accent: '#135B34' },
     { value: '∞',                 label: 'Ambition',   accent: '#D4AF37' },
@@ -528,7 +528,7 @@ export function SectorsBentoGrid() {
             className="mx-auto mt-5 max-w-xl text-[14.5px] leading-relaxed text-[#4A5568]"
           >
             A constellation of{' '}
-            <span className="font-semibold text-[#135B34]">{SECTORS.length} strategic sectors</span>
+            <span className="font-semibold text-[#135B34]">15  strategic sectors</span>
             {' '}orbiting a unified vision of sustainable growth and lasting impact.
           </motion.p>
         </motion.div>
