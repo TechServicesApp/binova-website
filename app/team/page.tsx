@@ -19,6 +19,7 @@ interface TeamMember {
   linkedin?: string
   email?: string
   image?: string
+  announced?: boolean
 }
 
 // ─── Avatar colors — one per member, cycling ─────────────────────────────────
@@ -168,14 +169,22 @@ function MemberCard({ member, index }: { member: TeamMember; index: number }) {
         <h3
           className="text-sm sm:text-base md:text-lg lg:text-xl font-bold transition-colors duration-300 font-display"
           style={{
-            color: hovered ? '#135B34' : '#2D3748',
+            color: !member.announced ? '#a0aec0' : (hovered ? '#135B34' : '#2D3748'),
             lineHeight: 1.2,
+            opacity: !member.announced ? 0.7 : 1,
           }}
         >
           {member.firstName}
           <br />
           <span style={{ fontWeight: 400 }}>{member.lastName}</span>
         </h3>
+
+        {/* Announcement label for incoming members */}
+        {!member.announced && (
+          <p className="text-[10px] text-[#a0aec0] font-semibold uppercase tracking-wider mt-1 animate-pulse">
+            Announcement coming soon
+          </p>
+        )}
 
         {/* Gold separator */}
         <div
@@ -189,7 +198,7 @@ function MemberCard({ member, index }: { member: TeamMember; index: number }) {
 
         {/* Position */}
         <p
-          className="text-[9px] sm:text-[10px] md:text-xs lg:text-xs font-bold uppercase tracking-[0.16em] font-sans"
+          className="text-[6px] sm:text-[5px] md:text-[5px] lg:text-xs font-bold  font-sans"
           style={{ color: deptColor }}
         >
           {member.position}
@@ -451,7 +460,7 @@ export default function TeamPage() {
                 className="grid gap-2 sm:gap-3 md:gap-4 lg:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4"
               >
                 {filtered.map((member, i) => (
-                  <MemberCard key={`${member.firstName}-${member.lastName}`} member={member} index={i} />
+                  <MemberCard key={`${member.firstName}-${i}`} member={member} index={i} />
                 ))}
               </motion.div>
             </AnimatePresence>

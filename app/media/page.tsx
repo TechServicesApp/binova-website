@@ -42,7 +42,7 @@ const NEWS = [
     readTime: '4 min read',
     views: '1.7k',
     image: IMAGES.energy,
-    author: { name: 'Paul Nguema', role: 'Energy Director' },
+    author: { name: 'Binova Media Desk', role: 'Corporate Communications' },
   },
   {
     id: 3,
@@ -55,7 +55,7 @@ const NEWS = [
     readTime: '3 min read',
     views: '1.3k',
     image: IMAGES.recruitment,
-    author: { name: 'Clara Biya', role: 'HR Director' },
+    author: { name: 'Binova Media Desk', role: 'Corporate Communications' },
   },
   {
     id: 4,
@@ -68,7 +68,7 @@ const NEWS = [
     readTime: '5 min read',
     views: '1.9k',
     image: IMAGES.mining,
-    author: { name: 'Sophie Nkolo', role: 'Chief Operations' },
+    author: { name: 'Binova Media Desk', role: 'Corporate Communications' },
   },
   {
     id: 5,
@@ -81,7 +81,7 @@ const NEWS = [
     readTime: '4 min read',
     views: '2.3k',
     image: IMAGES.supplyChain,
-    author: { name: 'Marc Etienne', role: 'Supply Chain Director' },
+    author: { name: 'Binova Media Desk', role: 'Corporate Communications' },
   },
 ]
 

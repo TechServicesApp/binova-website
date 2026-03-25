@@ -124,7 +124,7 @@ function ProjectCard({ project, index, listView }: CardProps) {
       >
       {/* Visual zone */}
       <div
-        className={`relative flex items-center justify-center overflow-hidden flex-shrink-0 ${listView ? 'w-16 sm:w-20 md:w-24 lg:w-28' : 'h-32 sm:h-36 md:h-40 lg:h-44 w-full'}`}
+        className={`relative flex items-center justify-center overflow-hidden flex-shrink-0 ${listView ? 'w-16 sm:w-20 md:w-24 lg:w-28' : 'h-40 sm:h-44 md:h-52 lg:h-60 w-full'}`}
         style={{ background: project.image ? 'transparent' : `linear-gradient(135deg, ${color}15 0%, rgba(240,247,244,0.95) 100%)` }}
       >
         {project.image && (
@@ -135,7 +135,7 @@ function ProjectCard({ project, index, listView }: CardProps) {
           />
         )}
         <span
-          className="select-none font-bold leading-none font-display z-0"
+          className={`select-none font-bold leading-none font-display ${project.image ? 'z-0 opacity-0' : 'z-0'}`}
           style={{
             fontSize: listView ? 'clamp(24px, 8vw, 36px)' : 'clamp(48px, 12vw, 80px)',
             color: hovered ? 'rgba(19,91,52,0.05)' : 'rgba(19,91,52,0.02)',
