@@ -32,7 +32,7 @@ export const metadata: Metadata = {
     template: '%s | Binova Holding Group',
   },
   description:
-    'International holding group with offices in Canada and Cameroon. Active in 14 sectors including banking, mining, agriculture, energy, and more.',
+    'International holding group with offices in Canada and Cameroon. Active in 15 sectors including banking, mining, agriculture, energy, and more.',
   keywords: [
     'holding group',
     'investment',

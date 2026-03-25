@@ -24,22 +24,22 @@ interface Project {
 // ─── Data ─────────────────────────────────────────────────────────────────────
 
 const SECTOR_COLORS: Record<string, string> = {
-  'Public Work and Real Estate': '#135B34',
-  'Transportation': '#1a5a8a',
+  'Public Work & Real Estate': '#135B34',
+  'Logistic & Transportation': '#1a5a8a',
   'Energy': '#FF6B35',
-  'Health and Sciences': '#D4AF37',
-  'Education and Training': '#1a8a4c',
-  'Agriculture and Livestock': '#2a9d5f',
+  'Health & Sciences': '#D4AF37',
+  'Education & Training': '#1a8a4c',
+  'Agriculture & Livestock': '#2a9d5f',
   'Mining': '#8B7355',
 }
 
 const SECTOR_ICONS: Record<string, string> = {
-  'Public Work and Real Estate': '🏗️',
-  'Transportation': '🚁',
+  'Public Work & Real Estate': '🏗️',
+  'Logistic & Transportation': '🚁',
   'Energy': '⚡',
-  'Health and Sciences': '🏥',
-  'Education and Training': '🎓',
-  'Agriculture and Livestock': '🐄',
+  'Health & Sciences': '🏥',
+  'Education & Training': '🎓',
+  'Agriculture & Livestock': '🐄',
   'Mining': '⛏️',
 }
 
@@ -484,7 +484,7 @@ export default function ProjectsPage() {
                     Have a project in mind?
                   </h2>
                   <p className="mt-3 sm:mt-4 max-w-lg text-sm sm:text-base leading-relaxed text-[#4A5568] font-sans">
-                    Binova Holding Group brings together expertise across 14 sectors to deliver
+                    Binova Holding Group brings together expertise across 15 sectors to deliver
                     world-class projects. Let's discuss your vision.
                   </p>
                 </div>

@@ -176,13 +176,13 @@ export function Footer() {
 
             {/* Description */}
             <p className="mt-4 text-[15px] leading-relaxed text-[#4A5568] font-sans max-w-sm">
-              Bridging continents through sustainable investment and world-class project delivery across 14 sectors.
+              Bridging continents through sustainable investment and world-class project delivery across 15 sectors.
             </p>
 
             {/* Stats mini cards */}
             <div className="mt-6 grid grid-cols-3 gap-3">
               {[
-                { value: '14+', label: 'Sectors' },
+                { value: '15+', label: 'Sectors' },
                 { value: '2', label: 'Countries' },
                 { value: '50+', label: 'Experts' },
               ].map((stat) => (

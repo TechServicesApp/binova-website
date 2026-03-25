@@ -95,7 +95,7 @@ const LEADERSHIP_PROFILES: LeadershipProfile[] = [
   { id: 1, title: 'President and Cofounder, Head of Science and Health Department' },
   { id: 2, title: 'Head of Energy Department' },
   { id: 3, title: 'Head of Mining' },
-  { id: 4, title: 'Head of Public Work Department' },
+  { id: 4, title: 'Head of Public Work & Real Estate  Department' },
   { id: 5, title: 'Head of Marketing and Strategy Department' },
   { id: 6, title: 'Head of Education and Training Department' },
   { id: 7, title: 'Head of Textile, Plastic and Paper Department' },

@@ -22,7 +22,7 @@ export const en: Dictionary = {
   hero: {
     badge: 'Est. 2023 \u00B7 Canada & Cameroon',
     tagline: 'A Passion For Excellence',
-    description: 'An international holding group bridging North America and Central Africa, investing in 14+ sectors to drive sustainable growth and world-class project delivery.',
+    description: 'An international holding group bridging North America and Central Africa, investing in 15+ sectors to drive sustainable growth and world-class project delivery.',
     discoverServices: 'Discover Services',
     viewProjects: 'View Projects',
     scrollToExplore: 'Scroll to explore',
@@ -66,12 +66,12 @@ export const en: Dictionary = {
   },
   sectors: {
     label: 'Where We Act',
-    title: '14+ Sectors of Excellence',
+    title: '15+ Sectors of Excellence',
     subtitle: 'We are active in a diversity of sectors, investing and financing small, medium and large projects across Africa and North America.',
     names: {
       'Banking & Finance': 'Banking & Finance',
       'Mining & Resources': 'Mining & Resources',
-      'Public Works': 'Public Works',
+      'Public Work & Real Estate ': 'Public Work & Real Estate',
       'Agriculture': 'Agriculture',
       'Food & Beverage': 'Food & Beverage',
       'Electronics': 'Electronics',
@@ -82,7 +82,7 @@ export const en: Dictionary = {
       'Transport & Logistics': 'Transport & Logistics',
       'Textile Industry': 'Textile Industry',
       'Supermarkets': 'Supermarkets',
-      'Automotive': 'Automotive',
+      'Automotive & Aerospace': 'Automotive & Aerospace',
     },
   },
   globalPresence: {
@@ -135,7 +135,7 @@ export const en: Dictionary = {
       { title: 'Gold Mining Expansion', sector: 'Mining & Resources' },
       { title: 'Solar Energy Farm \u2014 Douala', sector: 'Energy Industry' },
       { title: 'Agri-Processing Facility', sector: 'Agriculture' },
-      { title: 'National Highway Section', sector: 'Public Works' },
+      { title: 'National Highway Section', sector: 'Public Work & Real Estate' },
       { title: 'Smart Hospital Complex', sector: 'Health & Sciences' },
       { title: 'Vocational Training Center', sector: 'Education & Training' },
       { title: 'Telecom Infrastructure', sector: 'Telecom & Media' },

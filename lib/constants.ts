@@ -10,7 +10,7 @@ export const NAV_LINKS = [
 ] as const
 
 export const STATS = [
-  { value: 14, suffix: '+', label: 'Sectors of Activity' },
+  { value: 15, suffix: '+', label: 'Sectors of Activity' },
   { value: 2, suffix: '', label: 'Country Offices' },
   { value: 50, suffix: '+', label: 'Qualified Experts' },
   { value: null, symbol: '\u221E', label: 'Ambition' },
@@ -82,7 +82,7 @@ export const SOCIAL_CARDS = [
 export const SECTORS = [
   { name: 'Banking & Finance', icon: 'landmark', size: 'large' },
   { name: 'Mining & Resources', icon: 'mountain', size: 'tall' },
-  { name: 'Public Works', icon: 'building-2', size: 'wide' },
+  { name: 'Public Works & Real Estate', icon: 'building-2', size: 'wide' },
   { name: 'Agriculture', icon: 'wheat', size: 'small' },
   { name: 'Food & Beverage', icon: 'utensils', size: 'small' },
   { name: 'Electronics', icon: 'cpu', size: 'small' },
@@ -90,7 +90,7 @@ export const SECTORS = [
   { name: 'Health & Sciences', icon: 'heart-pulse', size: 'wide' },
   { name: 'Education & Training', icon: 'graduation-cap', size: 'wide' },
   { name: 'Telecom & Media', icon: 'radio', size: 'small' },
-  { name: 'Transport & Logistics', icon: 'truck', size: 'small' },
+  { name: 'Logistic & Transportation', icon: 'truck', size: 'small' },
   { name: 'Textile Industry', icon: 'shirt', size: 'small' },
   { name: 'Supermarkets', icon: 'shopping-cart', size: 'small' },
   { name: 'Automotive', icon: 'car', size: 'small' },
@@ -100,7 +100,7 @@ export const TEAM_MEMBERS = [
   { firstName: 'Rev. Fabien', lastName: 'SADJOUGUET', position: 'President and Cofounder, Head of Health and Sciences Department', department: 'Executive', image: '/teams/membre4.png', announced: true },
   { firstName: 'Ferdinand', lastName: 'TEMGWA', position: 'Head of Energy Department', department: 'Energy', image: '/teams/membre2.png', announced: true },
   { firstName: '◆', lastName: 'Incoming', position: 'Head of Mining Department', department: 'Mining', image: undefined, announced: false },
-  { firstName: '◆', lastName: 'Incoming', position: 'Head of Public Work Department', department: 'Operations', image: undefined, announced: false },
+  { firstName: '◆', lastName: 'Incoming', position: 'Head of Public Work & Real Estate  Department', department: 'Operations', image: undefined, announced: false },
   { firstName: '◆', lastName: 'Incoming', position: 'Head of Marketing and Strategy Department', department: 'Marketing', image: undefined, announced: false },
   { firstName: '◆', lastName: 'Incoming', position: 'Head of Education and Training Department', department: 'Strategy', image: undefined, announced: false },
   { firstName: '◆', lastName: 'Incoming', position: 'Head of Textile, Plastic and Paper Department', department: 'Operations', image: undefined, announced: false },
@@ -148,7 +148,7 @@ export const PROJECTS = [
   {
     id: 1,
     title: 'Binova Staff Residence',
-    sector: 'Public Work and Real Estate',
+    sector: 'Public Work & Real Estate',
     year: '2026',
     status: 'In Progress',
     description: 'To house its staff, the group wants to build around 130 four-story buildings, 20 duplexes, and a leisure center to accommodate around 10,000 people in its new industrial city, for an investment of about 70 million euros. The completion date is estimated for early 2028, with construction starting in December 2026.',
@@ -158,7 +158,7 @@ export const PROJECTS = [
   {
     id: 2,
     title: 'Binova Palace Hotel',
-    sector: 'Public Work and Real Estate',
+    sector: 'Public Work & Real Estate',
     year: '2026',
     status: 'In Progress',
     description: 'Project to build a 5-star, 250-room hotel in the Ocean department of southern Cameroon. The project represents an investment of 75 million euros and construction is scheduled to take two years.',
@@ -168,7 +168,7 @@ export const PROJECTS = [
   {
     id: 3,
     title: 'Southern Cameroon Airport',
-    sector: 'Transportation',
+    sector: 'Logistic & Transportation',
     year: '2026',
     status: 'In Progress',
     description: 'Private initiative to build an ultra-modern international airport with 6 runways up to 3 km long. Estimated at 5 billion euros, Binova plans phased deployment to transform air transport, tourism, and business in Cameroon.',
@@ -188,7 +188,7 @@ export const PROJECTS = [
   {
     id: 5,
     title: 'Dosage Form Pharmaceutical Manufacturing Unit',
-    sector: 'Health and Sciences',
+    sector: 'Health & Sciences',
     year: '2027',
     status: 'In Progress',
     description: 'With an investment of approximately 100 million euros for the construction phase on a 7-hectare area, Binova is building its first state-of-the-art pharmaceutical manufacturing unit in Africa. Construction starts in early 2027 for 24 months in southern Cameroon.',
@@ -198,7 +198,7 @@ export const PROJECTS = [
   {
     id: 6,
     title: 'API and Biologics Manufacturing Unit',
-    sector: 'Health and Sciences',
+    sector: 'Health & Sciences',
     year: '2027',
     status: 'In Progress',
     description: 'With an investment of approximately 140 million euros for the construction phase on a 12-hectare area, Binova is building its first state-of-the-art biotech manufacturing unit in Africa. Construction starts in early 2027 for 24 months in southern Cameroon.',
@@ -208,7 +208,7 @@ export const PROJECTS = [
   {
     id: 7,
     title: 'Holyframe University',
-    sector: 'Education and Training',
+    sector: 'Education & Training',
     year: '2027',
     status: 'In Progress',
     description: 'Construction on a dedicated 100-hectare area including administrative buildings, amphitheaters, classrooms, tutorial rooms, laboratories, library, and restaurant to ensure high-value scientific and technological training. Start is planned for early 2027 over 3 years, with an initial 300 million euros first phase.',
@@ -218,7 +218,7 @@ export const PROJECTS = [
   {
     id: 8,
     title: 'Poultry Farming',
-    sector: 'Agriculture and Livestock',
+    sector: 'Agriculture & Livestock',
     year: '2027',
     status: 'In Progress',
     description: 'Plan to develop a modern farm with a capacity of 5 million animals for an investment of 60 million euros.',
@@ -238,7 +238,7 @@ export const PROJECTS = [
   {
     id: 10,
     title: 'Hospitals',
-    sector: 'Health and Sciences',
+    sector: 'Health & Sciences',
     year: '2027',
     status: 'In Progress',
     description: 'Binova intends to build several reference hospitals and university hospitals in multiple African cities to improve medical care and patient experience.',
@@ -248,7 +248,7 @@ export const PROJECTS = [
   {
     id: 11,
     title: 'Drugs Distribution',
-    sector: 'Health and Sciences',
+    sector: 'Health & Sciences',
     year: '2027',
     status: 'In Progress',
     description: 'Binova intends to build several drug distribution centers in all African capitals to facilitate access to quality medicine at the best prices.',

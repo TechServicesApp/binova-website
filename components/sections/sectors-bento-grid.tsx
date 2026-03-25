@@ -40,7 +40,7 @@ const SECTORS: Sector[] = [
   { id: 3,  name: 'Textile &\nPaper',        shortName: 'Textile & Paper',        Icon: Layers,            color: '#FDE68A', description: 'Industrial textiles, packaging & paper products' },
   { id: 4,  name: 'Electronics',             shortName: 'Electronics',            Icon: MonitorSmartphone, color: '#C4B5FD', description: 'Consumer electronics & digital devices' },
   { id: 5,  name: 'Energy\nIndustry',        shortName: 'Energy Industry',        Icon: Zap,               color: '#FCD34D', description: 'Oil, gas, renewables & smart energy grids' },
-  { id: 6,  name: 'Transportation',          shortName: 'Transportation',         Icon: Truck,             color: '#6EE7B7', description: 'Logistics, freight & mobility solutions' },
+  { id: 6,  name: 'Logistics &\nTransportation',          shortName: 'Logistics &\nTransportation',         Icon: Truck,             color: '#6EE7B7', description: 'Logistics, freight & mobility solutions' },
   { id: 7,  name: 'Foods &\nBeverages',      shortName: 'Foods & Beverages',      Icon: UtensilsCrossed,   color: '#FDBA74', description: 'Artisanal food brands, agro-processing & distribution' },
   { id: 8,  name: 'Agriculture\n& Livestock',shortName: 'Agriculture & Livestock',Icon: Wheat,             color: '#86EFAC', description: 'Sustainable farming, livestock & agri-supply chains' },
   { id: 9,  name: 'Supermarkets',            shortName: 'Supermarkets',           Icon: ShoppingCart,      color: '#FCA5A5', description: 'Retail distribution & consumer goods' },
@@ -48,7 +48,6 @@ const SECTORS: Sector[] = [
   { id: 11, name: 'Education\n& Training',   shortName: 'Education & Training',   Icon: GraduationCap,     color: '#A5F3FC', description: 'Academic institutions, vocational & EdTech platforms' },
   { id: 12, name: 'Automotive\n& Aerospace', shortName: 'Automotive & Aerospace', Icon: Car,               color: '#FCA5A5', description: 'Vehicle manufacturing, EV & mobility innovation' },
   { id: 13, name: 'Mining\nIndustry',        shortName: 'Mining Industry',        Icon: Pickaxe,           color: '#E2B976', description: 'Mineral extraction, processing & resource management' },
-  { id: 14, name: 'Logistics\nTransportation',        shortName: 'Logistics & Transportation',        Icon: Truck,           color: '#FCA5A5', description: 'Supply chain management, freight & distribution' },
 ]
 
 // ─── Geometry helpers ─────────────────────────────────────────────────────────

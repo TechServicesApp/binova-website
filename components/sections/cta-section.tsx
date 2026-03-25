@@ -155,7 +155,7 @@ export function CTASection() {
         >
           <div className="flex items-center gap-2">
             <div className="h-2 w-2 rounded-full bg-[#135B34]" />
-            <span>14 Sectors</span>
+            <span>15 Sectors</span>
           </div>
           <div className="flex items-center gap-2">
             <div className="h-2 w-2 rounded-full bg-[#D4AF37]" />
