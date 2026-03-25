@@ -97,7 +97,7 @@ export const SECTORS = [
 ] as const
 
 export const TEAM_MEMBERS = [
-  { firstName: 'Rev. Fabien', lastName: 'SADJOUGUET', position: 'President and Cofounder, Head of Health and Science Department', department: 'Executive', image: '/teams/membre4.png', announced: true },
+  { firstName: 'Rev. Fabien', lastName: 'SADJOUGUET', position: 'President and Cofounder, Head of Health and Sciences Department', department: 'Executive', image: '/teams/membre4.png', announced: true },
   { firstName: 'Ferdinand', lastName: 'TEMGWA', position: 'Head of Energy Department', department: 'Energy', image: '/teams/membre2.png', announced: true },
   { firstName: '◆', lastName: 'Incoming', position: 'Head of Mining Department', department: 'Mining', image: undefined, announced: false },
   { firstName: '◆', lastName: 'Incoming', position: 'Head of Public Work Department', department: 'Operations', image: undefined, announced: false },
