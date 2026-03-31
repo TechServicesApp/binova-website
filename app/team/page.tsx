@@ -3,8 +3,9 @@
 import { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
 import Link from 'next/link'
-import { Linkedin, Mail, ArrowUpRight, ChevronRight } from 'lucide-react'
+import { Linkedin, Mail, ArrowUpRight, ChevronRight, Phone, Building2 } from 'lucide-react'
 import { TEAM_MEMBERS } from '@/lib/constants'
+import { PartnersSliderSection } from '@/components/sections/partners-slider-section'
 
 // ─── Types ────────────────────────────────────────────────────────────────────
 
@@ -20,6 +21,22 @@ interface TeamMember {
   email?: string
   image?: string
   announced?: boolean
+}
+
+interface Partner {
+  id: number
+  firstName: string
+  lastName: string
+  company: string
+  logo?: string
+  position: string
+  role: string
+  category: string
+  image?: string
+  description: string
+  email: string
+  phone: string
+  specialization: string
 }
 
 // ─── Avatar colors — one per member, cycling ─────────────────────────────────
@@ -59,6 +76,18 @@ function getDeptColor(dept: string): string {
     if (dept.toLowerCase().includes(key.toLowerCase())) return DEPT_COLORS[key]
   }
   return '#135B34'
+}
+
+// ─── Partner category colors ──────────────────────────────────────────────────
+
+const CATEGORY_COLORS: Record<string, string> = {
+  'Media & Communications': '#135B34',
+  'Engineering & Construction': '#1a8a4c',
+  'Pharmaceutical & Biotech': '#D4AF37',
+}
+
+function getCategoryColor(category: string): string {
+  return CATEGORY_COLORS[category] || '#135B34'
 }
 
 // ─── Member card ──────────────────────────────────────────────────────────────
@@ -460,12 +489,15 @@ export default function TeamPage() {
                 className="grid gap-2 sm:gap-3 md:gap-4 lg:gap-5 grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-4"
               >
                 {filtered.map((member, i) => (
-                  <MemberCard key={`${member.firstName}-${member.lastName}`} member={member} index={i} />
+                  <MemberCard key={`${member.firstName}-${member.lastName}-${i}`} member={member} index={i} />
                 ))}
               </motion.div>
             </AnimatePresence>
           </div>
         </section>
+
+        {/* ════════════════ PARTNERS SECTION ════════════════ */}
+        <PartnersSliderSection />
 
         {/* ════════════════ JOIN US CTA ════════════════ */}
         <section className="pb-24 lg:pb-32">

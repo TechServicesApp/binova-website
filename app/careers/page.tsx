@@ -750,15 +750,16 @@ export default function CareersPage() {
                   Send a spontaneous application — we're always looking for exceptional talent.
                 </p>
               </div>
-              <Link
-                href="/contact"
+              <button
+                type="button"
+                onClick={() => openApplyModal(null)}
                 className="flex-shrink-0 inline-flex items-center gap-2 rounded-xl border px-5 py-2.5 text-sm font-semibold transition-all duration-300 hover:border-[#135B34] text-[#135B34] font-sans"
                 style={{
                   borderColor: 'rgba(19,91,52,0.3)',
                 }}
               >
                 Get in Touch <ArrowUpRight className="h-3.5 w-3.5" />
-              </Link>
+              </button>
             </motion.div>
           </div>
         </section>
@@ -860,7 +861,7 @@ export default function CareersPage() {
                       {selectedJob ? selectedJob.title : 'General Application'}
                     </h3>
                     <p className="mt-1 text-xs text-[#4A5568] font-sans">
-                      Send your full name, email, CV (PDF), and cover letter (PDF) directly to rh@binova-holding.ca.
+                      Send your full name, email, CV (PDF), and cover letter (PDF)
                     </p>
                   </div>
                   <button

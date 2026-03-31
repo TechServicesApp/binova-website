@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useSearchParams } from 'next/navigation'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 import { OFFICES } from '@/lib/constants'
 import { MapPin, Mail, Phone, Send, Linkedin, Twitter, Instagram, Globe, Clock } from 'lucide-react'
@@ -17,11 +18,20 @@ const contactSchema = z.object({
   company: z.string().optional(),
   service: z.string().min(1, 'Please select a service'),
   message: z.string().min(10, 'Message must be at least 10 characters'),
+  projectTitle: z.string().optional(),
+  projectId: z.string().optional(),
+  projectSector: z.string().optional(),
 })
 
 type ContactForm = z.infer<typeof contactSchema>
 
 export default function ContactPage() {
+  const searchParams = useSearchParams()
+  const isPartnership = searchParams.get('type') === 'partnership'
+  const projectId = searchParams.get('projectId')
+  const projectTitle = searchParams.get('projectTitle')
+  const projectSector = searchParams.get('projectSector')
+
   const [submitted, setSubmitted] = useState(false)
   const [submitError, setSubmitError] = useState('')
 
@@ -32,6 +42,11 @@ export default function ContactPage() {
     reset,
   } = useForm<ContactForm>({
     resolver: zodResolver(contactSchema),
+    defaultValues: {
+      projectTitle: projectTitle || '',
+      projectId: projectId || '',
+      projectSector: projectSector || '',
+    }
   })
 
   const onSubmit = async (data: ContactForm) => {
@@ -43,7 +58,10 @@ export default function ContactPage() {
         headers: {
           'Content-Type': 'application/json',
         },
-        body: JSON.stringify(data),
+        body: JSON.stringify({
+          ...data,
+          isPartnership,
+        }),
       })
 
       const result = await response.json()
@@ -90,7 +108,7 @@ export default function ContactPage() {
             lineHeight: 1,
           }}
         >
-          CONTACT
+          {isPartnership ? 'PARTNERSHIP' : 'CONTACT'}
         </div>
 
         <div className="relative mx-auto max-w-7xl px-6 lg:px-8">
@@ -116,22 +134,40 @@ export default function ContactPage() {
               <div className="mb-6 flex items-center gap-3">
                 <div className="h-px w-12" style={{ background: 'linear-gradient(to right, #135B34, transparent)' }} />
                 <span className="text-[10px] font-semibold uppercase tracking-[0.3em] text-[#135B34] font-sans">
-                  Get In Touch
+                  {isPartnership ? 'Partnership Inquiry' : 'Get In Touch'}
                 </span>
               </div>
               <h1 className="mb-6 font-display text-5xl font-bold leading-[0.95] text-[#2D3748] md:text-6xl lg:text-7xl">
-                Let's Create <br />
-                <span style={{
-                  background: 'linear-gradient(135deg, #135B34 0%, #1a8a4c 40%, #D4AF37 80%)',
-                  WebkitBackgroundClip: 'text',
-                  WebkitTextFillColor: 'transparent',
-                  backgroundClip: 'text',
-                }}>
-                  Together
-                </span>
+                {isPartnership ? (
+                  <>
+                    Let's Partner <br />
+                    <span style={{
+                      background: 'linear-gradient(135deg, #135B34 0%, #1a8a4c 40%, #D4AF37 80%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}>
+                      On This Project
+                    </span>
+                  </>
+                ) : (
+                  <>
+                    Let's Create <br />
+                    <span style={{
+                      background: 'linear-gradient(135deg, #135B34 0%, #1a8a4c 40%, #D4AF37 80%)',
+                      WebkitBackgroundClip: 'text',
+                      WebkitTextFillColor: 'transparent',
+                      backgroundClip: 'text',
+                    }}>
+                      Together
+                    </span>
+                  </>
+                )}
               </h1>
               <p className="max-w-xl text-base leading-relaxed text-[#4A5568] font-sans">
-                Have a project in mind or questions about our services? Our team is ready to help turn your vision into reality.
+                {isPartnership 
+                  ? `We're excited about your interest in partnering on ${projectTitle || 'this project'}. Tell us more about your vision and how we can collaborate.`
+                  : 'Have a project in mind or questions about our services? Our team is ready to help turn your vision into reality.'}
               </p>
             </motion.div>
 
@@ -204,6 +240,21 @@ export default function ContactPage() {
                     </motion.div>
                   ) : (
                     <form onSubmit={handleSubmit(onSubmit)} className="space-y-6">
+                      {isPartnership && projectTitle && (
+                        <div className="rounded-xl border border-[#135B34]/30 bg-gradient-to-br from-[#135B34]/5 to-transparent p-4">
+                          <p className="text-xs font-semibold uppercase tracking-wider text-[#135B34] mb-2 font-sans">Project Reference</p>
+                          <p className="text-sm font-semibold text-[#2D3748] mb-1 font-sans">{projectTitle}</p>
+                          {projectSector && (
+                            <p className="text-xs text-[#4A5568] font-sans">Sector: {projectSector}</p>
+                          )}
+                        </div>
+                      )}
+                      
+                      {/* Hidden fields for project data */}
+                      <input type="hidden" {...register('projectTitle')} />
+                      <input type="hidden" {...register('projectId')} />
+                      <input type="hidden" {...register('projectSector')} />
+                      
                       <div className="grid gap-6 md:grid-cols-2">
                         <div>
                           <label htmlFor="name" className="mb-2 block text-xs font-medium uppercase tracking-wider text-[#4A5568] font-sans">

@@ -220,15 +220,15 @@ export default function ProjectDetailsPage() {
 
             {/* CTA */}
             <div className="p-8 rounded-2xl border border-[#135B34]/20 bg-gradient-to-br from-[#F0F7F4] to-white">
-              <h3 className="text-2xl font-bold text-[#2D3748] mb-4">Interested in this project?</h3>
+              <h3 className="text-2xl font-bold text-[#2D3748] mb-4">Interested in partnering on this project?</h3>
               <p className="text-[#4A5568] mb-6">
-                Get in touch with our team to learn more about partnership opportunities and project details.
+                Let's explore partnership opportunities together. Our team is ready to discuss how we can work together on this initiative.
               </p>
               <Link
-                href="/contact"
+                href={`/contact?type=partnership&projectId=${project.id}&projectTitle=${encodeURIComponent(project.title)}&projectSector=${encodeURIComponent(project.sector)}`}
                 className="inline-flex items-center gap-2 px-6 py-3 bg-[#135B34] text-white rounded-xl hover:shadow-lg transition-all"
               >
-                Contact Us
+                Partner With Us
               </Link>
             </div>
           </motion.div>
