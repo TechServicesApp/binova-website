@@ -156,7 +156,7 @@ export const PARTNERS = [
     position: 'Pharmaceutical Manufacturing and Engineering Solutions',
     role: 'CEO',
     category: 'Pharmaceutical & Biotech',
-    image: undefined,
+    image: '/teams/pradip.webp',
     description: 'Specialized in pharmaceutical and biotech consulting',
     email: 'contact@pharmadeep.com',
     phone: '+91xxxxxxxx',
