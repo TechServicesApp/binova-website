@@ -276,7 +276,7 @@ function PartnerSlide({ partner, isActive }: { partner: Partner; isActive: boole
 export function PartnersSliderSection() {
   const [current, setCurrent] = useState(0)
   const [isMobile, setIsMobile] = useState(typeof window !== 'undefined' && window.innerWidth < 768)
-  const partners = PARTNERS as Partner[]
+  const partners = PARTNERS 
 
   const next = () => setCurrent(c => (c + 1) % partners.length)
   const prev = () => setCurrent(c => (c - 1 + partners.length) % partners.length)

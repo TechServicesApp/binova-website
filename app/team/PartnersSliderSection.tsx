@@ -342,7 +342,7 @@ function PartnerSlide({ partner }: { partner: Partner }) {
 }
 
 export function PartnersSliderSection() {
-  const partners = PARTNERS as Partner[]
+  const partners = PARTNERS 
   const [current, setCurrent] = useState(0)
   const intervalRef = useRef<NodeJS.Timeout | null>(null)
 
