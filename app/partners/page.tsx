@@ -61,7 +61,7 @@ function PartnerCard({ partner, index }: { partner: Partner; index: number }) {
       whileInView={{ opacity: 1, y: 0 }}
       viewport={{ once: true, margin: '-40px' }}
       transition={{ duration: 0.6, delay: index * 0.08, ease: [0.22, 1, 0.36, 1] }}
-      className="group relative flex flex-col md:flex-row overflow-hidden rounded-3xl border text-center md:text-left cursor-pointer w-full"
+      className="group relative flex flex-col md:flex-row overflow-hidden rounded-3xl border text-center md:text-left cursor-pointer w-full min-h-[300px] sm:min-h-[380px] md:min-h-[420px] lg:min-h-[480px]"
       style={{
         background: hovered ? 'rgba(247,249,250,0.98)' : 'rgba(255,255,255,0.95)',
         borderColor: hovered ? `${categoryColor}60` : '#E2E8F0',
@@ -83,13 +83,13 @@ function PartnerCard({ partner, index }: { partner: Partner; index: number }) {
 
       {/* LEFT SECTION: Logo & Company */}
       <div
-        className="relative flex flex-col sm:flex-row items-center gap-4 sm:gap-6 md:gap-8 px-4 sm:px-6 md:px-10 py-6 sm:py-8 md:py-10 w-full sm:w-auto sm:flex-shrink-0"
+        className="relative flex flex-col sm:flex-row items-center gap-5 sm:gap-6 md:gap-8 px-5 sm:px-7 md:px-12 py-10 sm:py-16 md:py-16 lg:py-20 w-full sm:w-auto sm:flex-shrink-0"
         style={{ borderRight: `1px solid ${hovered ? categoryColor + '20' : '#E2E8F0'}` }}
       >
         {/* Logo/Avatar container */}
         <div className="relative flex-shrink-0">
           <div
-            className="relative flex h-20 w-20 sm:h-24 sm:w-24 md:h-28 md:w-28 lg:h-32 lg:w-32 items-center justify-center rounded-2xl overflow-hidden border-2"
+            className="relative flex h-28 w-28 sm:h-36 sm:w-36 md:h-44 md:w-44 lg:h-52 lg:w-52 items-center justify-center rounded-2xl overflow-hidden border-2"
             style={{
               background: partner.image ? 'transparent' : `radial-gradient(circle at 35% 35%, ${avatar.bg}, ${avatar.bg}dd)`,
               borderColor: hovered ? `${categoryColor}40` : `${categoryColor}20`,
@@ -121,7 +121,7 @@ function PartnerCard({ partner, index }: { partner: Partner; index: number }) {
         {/* Company info */}
         <div className="flex flex-col gap-1.5 sm:gap-2 md:gap-3 text-center sm:text-left">
           <h3
-            className="text-base sm:text-lg md:text-xl lg:text-2xl font-bold transition-colors duration-300 font-display"
+            className="text-lg sm:text-xl md:text-2xl lg:text-3xl font-bold transition-colors duration-300 font-display"
             style={{
               color: hovered ? '#135B34' : '#2D3748',
               lineHeight: 1.2,
@@ -130,7 +130,7 @@ function PartnerCard({ partner, index }: { partner: Partner; index: number }) {
             {partner.company}
           </h3>
           <span
-            className="rounded-full px-3 py-1 sm:py-1.5 text-[10px] sm:text-xs font-semibold uppercase tracking-wider w-fit mx-auto sm:mx-0"
+            className="rounded-full px-4 py-2 sm:py-2 text-xs sm:text-sm font-semibold uppercase tracking-wider w-fit mx-auto sm:mx-0"
             style={{ background: `${categoryColor}12`, color: `${categoryColor}bb` }}
           >
             {partner.category}
@@ -140,10 +140,10 @@ function PartnerCard({ partner, index }: { partner: Partner; index: number }) {
 
       {/* MIDDLE SECTION: Consultant Info */}
       <div
-        className="relative flex flex-col justify-center gap-2 sm:gap-3 md:gap-4 px-4 sm:px-6 md:px-10 py-6 sm:py-8 md:py-10 w-full sm:flex-1"
+        className="relative flex flex-col justify-center gap-4 sm:gap-5 md:gap-6 px-5 sm:px-7 md:px-12 py-10 sm:py-16 md:py-16 lg:py-20 w-full sm:flex-1"
         style={{ borderRight: `1px solid ${hovered ? categoryColor + '20' : '#E2E8F0'}`, borderTop: `1px solid ${hovered ? categoryColor + '20' : '#E2E8F0'}` }}
       >
-        <div className="flex flex-col gap-2 sm:gap-3 md:gap-4 text-center sm:text-left">
+        <div className="flex flex-col gap-4 sm:gap-5 md:gap-6 text-center sm:text-left">
           {/* Title & Name */}
           <div>
             <p
@@ -152,13 +152,13 @@ function PartnerCard({ partner, index }: { partner: Partner; index: number }) {
             >
               {partner.role}
             </p>
-            <p className="text-sm sm:text-base md:text-lg font-bold text-[#2D3748] mt-1 font-display">
+            <p className="text-sm sm:text-base md:text-lg lg:text-xl font-bold text-[#2D3748] mt-2 font-display">
               {partner.firstName} {partner.lastName}
             </p>
           </div>
 
           {/* Description */}
-          <p className="text-xs sm:text-xs md:text-sm leading-relaxed text-[#4A5568] font-sans">
+          <p className="text-sm sm:text-base md:text-base lg:text-sm leading-relaxed text-[#4A5568] font-sans">
             {partner.description}
           </p>
 
@@ -175,7 +175,7 @@ function PartnerCard({ partner, index }: { partner: Partner; index: number }) {
       </div>
 
       {/* RIGHT SECTION: Contact Actions */}
-      <div className="relative flex flex-row sm:flex-col items-center justify-center gap-2 sm:gap-3 md:gap-4 px-4 sm:px-6 md:px-10 py-6 sm:py-8 md:py-10 w-full sm:w-auto sm:flex-shrink-0" style={{ borderTop: `1px solid ${hovered ? categoryColor + '20' : '#E2E8F0'}` }}>
+      <div className="relative flex flex-row sm:flex-col items-center justify-center gap-3 sm:gap-4 md:gap-5 px-5 sm:px-7 md:px-12 py-10 sm:py-16 md:py-16 lg:py-20 w-full sm:w-auto sm:flex-shrink-0" style={{ borderTop: `1px solid ${hovered ? categoryColor + '20' : '#E2E8F0'}` }}>
         {/* Connect label — hidden on mobile */}
         <div className="hidden sm:block text-center mb-1 md:mb-2">
           <p className="text-[9px] md:text-[10px] font-semibold uppercase tracking-wider text-[#A0AEC0] font-sans">
@@ -361,7 +361,7 @@ export default function PartnersPage() {
         </div>
 
         {/* ════════════════ GRID ════════════════ */}
-        <section className="py-10 sm:py-14 md:py-16 lg:py-20">
+        <section className="py-16 sm:py-24 md:py-28 lg:py-32">
           <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-7 lg:px-8">
             <AnimatePresence mode="wait">
               <motion.div
@@ -370,7 +370,7 @@ export default function PartnersPage() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, y: -8 }}
                 transition={{ duration: 0.3 }}
-                className="grid gap-6 lg:gap-8 grid-cols-1 w-full"
+                className="grid gap-10 sm:gap-12 md:gap-14 lg:gap-16 grid-cols-1 w-full"
               >
                 {filtered.map((partner, i) => (
                   <PartnerCard key={`${partner.firstName}-${partner.lastName}-${i}`} partner={partner} index={i} />
@@ -381,8 +381,8 @@ export default function PartnersPage() {
         </section>
 
         {/* ════════════════ CTA SECTION ════════════════ */}
-        <section className="pb-24 lg:pb-32">
-          <div className="mx-auto max-w-7xl px-6 lg:px-8">
+        <section className="pb-32 lg:pb-40">
+          <div className="mx-auto max-w-7xl px-4 sm:px-6 md:px-8 lg:px-8">
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
