@@ -12,7 +12,9 @@ const nextConfig = {
         pathname: '/**',
       },
     ],
-
+  },
+  experimental: {
+    turbopack: false,
   },
 }
 

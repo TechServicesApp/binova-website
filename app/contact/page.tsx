@@ -3,6 +3,7 @@
 import { motion } from 'framer-motion'
 import Link from 'next/link'
 import { useSearchParams } from 'next/navigation'
+import { Suspense } from 'react'
 import { fadeUp, staggerContainer } from '@/lib/animations'
 import { OFFICES } from '@/lib/constants'
 import { MapPin, Mail, Phone, Send, Linkedin, Twitter, Instagram, Globe, Clock } from 'lucide-react'
@@ -25,7 +26,7 @@ const contactSchema = z.object({
 
 type ContactForm = z.infer<typeof contactSchema>
 
-export default function ContactPage() {
+function ContactPageContent() {
   const searchParams = useSearchParams()
   const isPartnership = searchParams.get('type') === 'partnership'
   const projectId = searchParams.get('projectId')
@@ -475,5 +476,13 @@ export default function ContactPage() {
         </div>
       </section>
     </>
+  )
+}
+
+export default function ContactPage() {
+  return (
+    <Suspense fallback={<div className="min-h-screen" />}>
+      <ContactPageContent />
+    </Suspense>
   )
 }
